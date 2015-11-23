@@ -830,10 +830,3 @@ using namespace Graph_lib;
 		cout << "The score is " << score << endl;
 	}
 
-
-	
-
-
-	
-	
-     
