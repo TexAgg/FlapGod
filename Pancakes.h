@@ -45,6 +45,17 @@ private:
 	Graph_lib::Text tech;	
 };
 
+/*
+struct Error_window : Graph_lib::Window
+{
+	Error_window(int, int, const String&);
+	
+private:
+		Graph_lib::Outbox ob;
+		Graph_lib::Button bye;
+};
+*/
+
 //Use this for reading/writing names and associated scores
 struct Score
 { 
