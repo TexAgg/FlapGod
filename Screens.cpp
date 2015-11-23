@@ -19,9 +19,9 @@ using namespace Graph_lib;
 	rules(Point(200,200),"rules.jpg",Suffix::Encoding::jpg),
 	ready(Point(200,500),80,30,"Ready!",ready_callback),
 	diff(Point(50,500),80,30,Menu::horizontal,"Difficulty"),
-	initials(Point(200,150),80,40,"Initials:"),
+	initials(Point(200,110),80,40,"Initials:"),
 	obox(Point(150,110),200,60,"Error:"),
-	confirm_name(Point(280,150),100,30,"Confirm name",confirm_name_cb)
+	confirm_name(Point(200,150),100,30,"Confirm name",confirm_name_cb)
     {
         //splash_shapes.push_back(bg);
         splash_shapes.push_back(txt);
@@ -631,7 +631,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pancake_maker()
 	{
-		turn = 0;
+		turn = 0; //Reset the game
 		
 		//Make the points in order to place the buttons
 		for(int i = 0; i < difficulty; i++)

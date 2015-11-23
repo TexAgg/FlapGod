@@ -2,4 +2,4 @@
 560 fds
 500 gte
 500 gte
-500 tjd
+500 gte
