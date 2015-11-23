@@ -324,13 +324,16 @@ using namespace Graph_lib;
 		*/
 		else
 		{
+			Error_window err(Point(300,300),300,300,"ERROR!");
+			err.redraw();
+			
 			Graph_lib::Text badname(Point(400,400),"Enter a valid name!");
 			attach(badname);
 			
 			redraw();
 			Fl::flush();
 			Fl::redraw();
-			system("sleep 1");
+			system("sleep 3");
 			
 			detach(badname);
 		}

@@ -39,22 +39,24 @@ struct Textangle : Graph_lib::Shape
 	void draw_lines() const;
 	
 private:
-	
+
 	Graph_lib::Rectangle rec;
 	//Graph_lib::Text* tech;
 	Graph_lib::Text tech;	
 };
 
-/*
 struct Error_window : Graph_lib::Window
 {
-	Error_window(int, int, const String&);
+	Error_window(Point,int, int, const String&);
 	
 private:
-		Graph_lib::Outbox ob;
+
+		Graph_lib::Out_box ob;
 		Graph_lib::Button bye;
+		
+		void error_action();
+		static void error_cb(Address, Address);
 };
-*/
 
 //Use this for reading/writing names and associated scores
 struct Score

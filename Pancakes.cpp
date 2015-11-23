@@ -38,6 +38,34 @@ using namespace Graph_lib;
 		tech.draw_lines();
 	}
 	
+	//Nothing attached shows up when the window is actually made for some reason
+	Error_window::Error_window(Point pt, int w, int h, const String& s):
+	Window(pt,w,h,s),
+	ob(Point(pt.x+10,pt.y+10),100,70,"Invalid!"),
+	bye(Point(pt.x+30,pt.y+30),80,30,"OK",error_cb)
+	{
+		attach(ob);
+		ob.put("Invalid name: Please enter 2-3 alpha characters");
+		//cout << "Invalid name: Please enter 2-3 alpha characters" << endl;
+		
+		attach(bye);
+		
+		cout << "Before error redraw" << endl;
+		redraw();
+		cout << "After error redraw" << endl;
+	}
+	
+	void Error_window::error_cb(Address, Address data)
+	{
+		Error_window& spc = *static_cast<Error_window*>(data);
+        spc.error_action();
+	}
+	
+	void Error_window::error_action()
+	{
+		hide();
+	}
+	
 	Score::Score(int n, string s):
 	score(n),
 	name(s)
