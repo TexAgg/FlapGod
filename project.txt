@@ -1,0 +1,78 @@
+Team Project Specification
+Due: 11:59 P.M. Wednesday, December 2, 2015
+
+
+The project is to design and write a C++14/FLTK computer game program with a graphical user interface.  The game is based on "pancake sorting," as described at 
+http://en.wikipedia.org/wiki/Pancake_sorting, which actually has some mathematical significance.  (Note that Bill Gates was a freshman at Harvard when he and one of his professors wrote a research paper about this!)
+
+The heart of the game is a centered stack of pancakes, each one a different size.  The goal is to get the stack into order (from smallest on top to largest on bottom) by repeatedly flipping over a top partial stack of some number of pancakes.  See the Wikipedia article for an example flipping the top three pancakes.  Each team should choose a clever name for the project, like “The Pancake-inator” or “Flip Those Cakes” or “Order, Schmorder” (but keep it clean  ).
+
+The program must:
+1.	Start with an attractive splash screen showing (at least) the name of the game, the team number, and the team members' names.  Feel free to add team members' pictures, play music, etc.
+2.	Explain how to play the game.
+3.	Ask for the player's initials and display the top 5 scores read in from the disk (see item 6 below) followed by the player's initials.  The top scores file starts out empty.
+4.	Ask for a difficulty level from 2 to 9; this is the number of pancakes.  (Note: The Honors project goes up to 12—see “Honors Project” section below.)  Each pancake is a skinny ellipse of a different size and color.  Display the pancakes in a centered stack in a random order.  Hint: Look up "permutation" at cplusplus.com.
+5.	Allow the player to select where to insert the spatula (below some pancake); you may decide to have a button beside each possible spatula position, or choose some other way to indicate where to flip.  When the player clicks the "Flip!" button, flip over the partial stack above the spatula and redraw the screen.
+6.	If the pancake stack is now in order, from smallest on top to largest on the bottom, calculate the player's score (see "Scoring" below) and display it next to the player's initials. Sort the list of 6 scores and write the top 5 out to disk with initials.  Then the next time the game is played that file will be read in and displayed in step 3 above.  Note: The game is also over if the player makes too many flips (see "Scoring" below).  Ask the player if they want to play another game or quit.
+
+Scoring: The instructor will provide a function named find_solution which calculates the minimum number of flips needed for a particular stack of pancakes.  The score for one game is 100 minus 10 times the number of unnecessary flips more than the minimum, multiplied by the difficulty level.  For example, if a particular stack of 6 pancakes could be flipped into order with 5 flips (according to the find_solution function), but the player takes 7 flips, then the score is [100 – 10 * (7 – 5)] * 6 = 480.  The score for a game cannot go below zero, so in this case the game ends after 15 flips even if the pancakes are still not in order.
+________________________________________________________________________
+EXTRA ITEMS 
+
+Display "Can be done in xx flips" (use the information from find_solution).  Also display a running count of how many flips so far, and the player's score so far.
+
+Have a “Give me a hint” button that will show the best next move (use the information from find_solution).
+
+Timer to end the game when time is up.  Allow 10 times the number of pancakes, e.g., 7 pancakes gives 70 seconds.  Display a digital clock with the time remaining.  Hint:  Check the online FLTK documentation for Fl::add_timeout.
+________________________________________________________________________
+
+This is a team project, with three or four students on a team.  The instructor will assign the teams.  (Note: If there are any problems with your team assignment, please talk to your TA promptly.)  
+
+Divide up the code, with each student on a team of 3 doing two of the six items on page 1.  If you have a fourth team member, that person must do one of the extra items.
+
+A team of 3 will receive 5 points extra credit for doing one "Extra Item" or 10 points for doing two.  A team of 4 will receive 5 points extra credit for doing a second "Extra Item."
+
+You must use at least two C++11 features, such as auto and range-based for.  You must write at least two classes of your own, with separate header and implementation files.  Follow good style, and limit each function to no more than 24 lines (one terminal window).  Each team member is expected to have a rough idea of how all the code works, and should be able to explain in detail how their own part of the code works. 
+
+Be creative in deciding how to meet these specifications in an attractive and user-friendly way, but get the basic functionality working before you try to make it too fancy, or you may run out of time!
+
+All user input and output must be through the GUI, not the console window.  However, you may use the console window for printing debugging messages for the developers (your team).
+
+Your program should compile and run without change on the Visual C++ environment in the lab or build.cse.tamu.edu with X windows.
+
+Your program must be submitted both to CSNET and also on a CD or DVD.  The project report (described below) should be submitted on paper to your TA, along with your CD or DVD.  You only need to submit one report and CD or DVD and CSNET file per team.  Write a report according to the outline below.  All team members will receive the same project grade, unless some team member does not do his/her part (see report outline below).  
+
+Important!  You must demonstrate your project to your TA or it will not be graded!
+
+Note about teamwork: Immediately exchange contact information with your teammates and schedule times to meet and work on the project.  If your teammates are in the same lab section, you have the two hours per week during lab, but in any case you need to schedule meeting times outside of lab. As meeting scheduling can be difficult, use this lab time wisely! Attendance will be taken during lab, so that complaints of "We could never find a time to meet" will not be taken seriously.
+
+
+REPORT OUTLINE
+
+The project report must be printed on a laser printer.  The report should include the following sections:
+
+1.  Team information (team name, members' names, who did what, did each member
+do a fair share of the work)
+2.  Statement of the problem, significance, etc.
+3.  Restrictions and limitations
+4.  Explanation of your approach (analysis to choose a strategy for programming the project, how you coded it, etc.)
+5.  Sample run (screen shots)
+6.  Results and analysis
+7.  Conclusions - What did you show?  What did you learn? 
+8.  Future research (how your program could be improved or extended)
+9.  Instructions on how to run your program
+10. Listing of the COMMENTED program
+11. Bibliography - references used, if any
+
+
+HONORS PROJECT
+
+The Honors project includes the basic 6 items above, with the following changes:
+1.	The maximum number of pancakes is 12.
+2.	You must write your own “find_solution” function as follows:
+a.	If the number of pancakes is less than or equal to 9, call the instructor’s find_solution function.
+b.	If the number of pancakes is greater than 9, calculate how many moves are needed to get the largest pancake into its final position (0, 1, or 2 moves), plus how many moves are needed to get the next-to-largest pancake into its final position (0, 1, or 2 moves), and so on, until you have all the pancakes larger than 9 in place; then add the moves so far to the instructor’s find_solution function value for the remaining 9 pancakes to get the “minimum” total number of moves to use in the scoring function.  
+
+For some stacks of more than 9 pancakes (like 1 2 3 4 5 6 10 9 8 7, with the 1 on top), this overestimates the minimum, so if the player actually gets the pancakes into order with fewer flips, add a “super bonus” of an extra 1000 points to the score with some message like “Wow!  You beat the computer!  You win 1000 extra bonus points!”  Use this test case to be sure your bonus works.
+
+The Honors project teams each have three members who need to work together on the new find_solution function.  Doing all of the above will qualify for either Honors designation on your transcript (if you are listed in Howdy in a 2xx section of CSCE 121) or for 10 points extra credit (if you are not), but not both.

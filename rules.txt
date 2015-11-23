@@ -1,0 +1,4 @@
+Rules:
+1. Flip the pancakes to sort them from largest to smallest!
+2. Select two pancakes to flip them and all the pancakes in-between
+3. Try to do it in as few flips as possible
