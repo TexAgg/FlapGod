@@ -98,9 +98,14 @@ using namespace Graph_lib;
 			
 			//Maybe get a screen to appear for a few seconds instead of just returning straight to the main menu
 			
+			Graph_lib::Text gg(Point(400,400),"Congrats!");
+			attach(gg);
+			
 			redraw();
 			Fl::flush();
 			Fl::redraw();
+			
+			detach(gg);
 			
 			system("sleep 3");
 			
@@ -311,6 +316,23 @@ using namespace Graph_lib;
 			confirm_attached = false;
 			
 			ready_pressed();
+		}
+		/*
+		*Tell the user that the name they have entered is invalid
+		*Tell them valid options
+		*Possibly use an error window?
+		*/
+		else
+		{
+			Graph_lib::Text badname(Point(400,400),"Enter a valid name!");
+			attach(badname);
+			
+			redraw();
+			Fl::flush();
+			Fl::redraw();
+			system("sleep 1");
+			
+			detach(badname);
 		}
 		
 		cout << "Your name is " << player_name << endl;
