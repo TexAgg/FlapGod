@@ -45,6 +45,7 @@ private:
 	Graph_lib::Text tech;	
 };
 
+//For when the user enters an invalid name
 struct Error_window : Graph_lib::Window
 {
 	Error_window(Point,int, int, const String&);
