@@ -98,6 +98,12 @@ using namespace Graph_lib;
 			
 			//Maybe get a screen to appear for a few seconds instead of just returning straight to the main menu
 			
+			redraw();
+			Fl::flush();
+			Fl::redraw();
+			
+			system("sleep 3");
+			
 			r2s_pressed();//Back to the main menu
 			
 			ordered_ints.clear();
