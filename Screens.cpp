@@ -104,6 +104,7 @@ using namespace Graph_lib;
 			//Maybe get a screen to appear for a few seconds instead of just returning straight to the main menu
 			
 			Graph_lib::Text gg(Point(400,400),"Congrats!");
+			gg.set_font_size(24);
 			attach(gg);
 			
 			redraw();
