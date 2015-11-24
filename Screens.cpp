@@ -9,7 +9,7 @@ using namespace Graph_lib;
 /*
 *All these initializers are unsightly
 *There may be so many that it causes an error when I add more
-*i.e.: 'glibc detected'
+*i.e.: 'glibc detected'. Maybe memory leak?
 */
     Game_screen::Game_screen(Point pt, int width, int height, const string& win_name):
     Window(pt,width,height,win_name),
@@ -120,6 +120,8 @@ using namespace Graph_lib;
 			output.open("scores.txt",ios::app);
 			output << score << " " << player_name << endl;
 			cout << score << " " << player_name << endl;
+			
+			//Is this neccesary?
 			output.flush();
 			output.close();
 			
@@ -367,23 +369,6 @@ using namespace Graph_lib;
 				obox.put("Enter a valid name! (2-3 alpha characters)");
 				obox_attached = true;
 			}	
-			
-			/*
-			Graph_lib::Text badname(Point(300,130),"Enter a valid name! (2-3 alpha characters)");
-			attach(badname);
-			
-			
-			//When invalid name entered, attach Text 
-			//Remove text when a valid name is entered
-			
-			
-			redraw();
-			Fl::flush();
-			Fl::redraw();
-			system("sleep 2");
-			
-			detach(badname);
-			*/
 		}
 		
 		cout << "Your name is " << player_name << endl;
