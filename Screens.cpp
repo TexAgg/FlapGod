@@ -122,8 +122,8 @@ using namespace Graph_lib;
 			cout << score << " " << player_name << endl;
 			
 			//Is this neccesary?
-			//output.flush();
-			//output.close();
+			output.flush();
+			output.close();
 			
 			//scores.push_back(new Score(score,player_name));
 		}
@@ -273,7 +273,7 @@ using namespace Graph_lib;
 	/*
 	*Maybe let objects detach themselves when they go out of scope instead of 
 	*dealing with this many messy booleans.
-	*But that causes a segmentation fault
+	*JK that causes a segmentation fault
 	*/
 	void Game_screen::r2s_pressed()
 	{
