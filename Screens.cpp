@@ -120,6 +120,8 @@ using namespace Graph_lib;
 			output.open("scores.txt",ios::app);
 			output << score << " " << player_name << endl;
 			cout << score << " " << player_name << endl;
+			
+			//Is this neccesary?
 			output.flush();
 			output.close();
 			
