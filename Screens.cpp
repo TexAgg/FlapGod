@@ -367,23 +367,6 @@ using namespace Graph_lib;
 				obox.put("Enter a valid name! (2-3 alpha characters)");
 				obox_attached = true;
 			}	
-			
-			/*
-			Graph_lib::Text badname(Point(300,130),"Enter a valid name! (2-3 alpha characters)");
-			attach(badname);
-			
-			
-			//When invalid name entered, attach Text 
-			//Remove text when a valid name is entered
-			
-			
-			redraw();
-			Fl::flush();
-			Fl::redraw();
-			system("sleep 2");
-			
-			detach(badname);
-			*/
 		}
 		
 		cout << "Your name is " << player_name << endl;
