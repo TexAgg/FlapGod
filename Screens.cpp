@@ -5,7 +5,8 @@
 #include "Screens.h"
  
 using namespace Graph_lib;
- 
+
+	//All these initializers are unsightly
     Game_screen::Game_screen(Point pt, int width, int height, const string& win_name):
     Window(pt,width,height,win_name),
     txt(Point(300,300),"Flap God"),
@@ -20,7 +21,7 @@ using namespace Graph_lib;
 	ready(Point(200,500),80,30,"Ready!",ready_callback),
 	diff(Point(50,500),80,30,Menu::horizontal,"Difficulty"),
 	initials(Point(200,110),80,40,"Initials:"),
-	obox(Point(150,110),200,60,"Error:"),
+	obox(Point(325,150),300,45,"Error:"),
 	confirm_name(Point(200,150),100,30,"Confirm name",confirm_name_cb)
     {
         //splash_shapes.push_back(bg);
@@ -261,6 +262,11 @@ using namespace Graph_lib;
         Game_screen& spc = *static_cast<Game_screen*>(data);
         spc.r2s_pressed();
 	}
+	
+	/*
+	*Maybe let objects detach themselves when they go out of scope instead of 
+	*dealing with this many messy booleans
+	*/
 	void Game_screen::r2s_pressed()
 	{
 		cout<<"Returning to main menu\n" << endl;
@@ -287,11 +293,15 @@ using namespace Graph_lib;
 			initials.hide();
 			initials_attached=false;
 		}
-		
 		if(confirm_attached)
 		{
 			confirm_name.hide();
 			confirm_attached = false;
+		}
+		if(obox_attached)
+		{
+			detach(obox);
+			obox_attached = false;
 		}
 	}
 	
@@ -312,6 +322,12 @@ using namespace Graph_lib;
 			//attach(ready);
 			//ready_attached=true;
 			
+			if(obox_attached)
+			{
+				detach(obox);
+				obox_attached = false;
+			}
+			
 			detach(confirm_name);
 			confirm_attached = false;
 			
@@ -328,20 +344,29 @@ using namespace Graph_lib;
 			//Error_window err(Point(300,300),300,300,"ERROR!");
 			//err.redraw();
 			
-			Graph_lib::Text badname(Point(400,400),"Enter a valid name!(2-3 alpha characters)");
-			attach(badname);
+			if(!obox_attached)
+			{
+				attach(obox);
+				obox.put("Enter a valid name! (2-3 alpha characters)");
+				obox_attached = true;
+			}	
 			
 			/*
-			*When invalid name entered, attach Text 
-			*Remove text when a valid name is entered
-			*/
+			Graph_lib::Text badname(Point(300,130),"Enter a valid name! (2-3 alpha characters)");
+			attach(badname);
+			
+			
+			//When invalid name entered, attach Text 
+			//Remove text when a valid name is entered
+			
 			
 			redraw();
 			Fl::flush();
 			Fl::redraw();
-			system("sleep 3");
+			system("sleep 2");
 			
 			detach(badname);
+			*/
 		}
 		
 		cout << "Your name is " << player_name << endl;

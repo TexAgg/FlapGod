@@ -66,6 +66,8 @@ private:
 	Graph_lib::Button confirm_name;
 	Graph_lib::Out_box obox;
 	
+	bool obox_attached = false;
+	
 	void pancake_maker();					//Make the pancakes
 	void remove_pancakes();					//Remove the pancakes from the screen
 	
