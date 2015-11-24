@@ -50,6 +50,7 @@ private:
 	Graph_lib::Menu diff;					//Select the difficulty
 	Graph_lib::In_box initials; 
 	//Graph_lib::Menu flip_buttons;
+	//Graph_lib::Text choose_diff;
 	
 	//These are so I don't try to detach something which isn't attached
 	bool diff_attached = false;

@@ -6,7 +6,10 @@
  
 using namespace Graph_lib;
 
-	//All these initializers are unsightly
+/*
+*All these initializers are unsightly
+*There may be so many that it causes an error when I add more
+*/
     Game_screen::Game_screen(Point pt, int width, int height, const string& win_name):
     Window(pt,width,height,win_name),
     txt(Point(300,300),"Flap God"),
@@ -265,7 +268,8 @@ using namespace Graph_lib;
 	
 	/*
 	*Maybe let objects detach themselves when they go out of scope instead of 
-	*dealing with this many messy booleans
+	*dealing with this many messy booleans.
+	*But that causes a segmentation fault
 	*/
 	void Game_screen::r2s_pressed()
 	{
@@ -275,6 +279,7 @@ using namespace Graph_lib;
 		detach(rules);
 		if (diff_attached)
 		{
+			//detach(choose_diff);
 			diff.hide();
 			diff_attached = false;
 		}
@@ -393,6 +398,14 @@ using namespace Graph_lib;
 			detach(ready);
 			ready_attached = false;
 		}
+		
+		//attach(choose_diff);
+		
+		/*
+		attach(obox);
+		obox_attached = true;
+		obox.put("Choose a difficulty");
+		*/
 		
 		attach(diff);
 		diff_attached = true;
@@ -760,11 +773,19 @@ using namespace Graph_lib;
 			pcakes[i]->set_rank(i);
 		}
 		
+		//Detach other stuff
 		if(diff_attached)
 		{
 			diff.hide();
 			diff_attached=false;
 		}
+		/*
+		if(obox_attached)
+		{
+			detach(obox);
+			obox_attached = false;
+		}
+		*/
 		
 		for(int i = 0; i < pcakes.size();i++)
 		{
