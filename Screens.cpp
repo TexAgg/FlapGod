@@ -356,13 +356,9 @@ using namespace Graph_lib;
 		/*
 		*Tell the user that the name they have entered is invalid
 		*Tell them valid options
-		*Possibly use an error window?
 		*/
 		else
 		{
-			//Error_window err(Point(300,300),300,300,"ERROR!");
-			//err.redraw();
-			
 			if(!obox_attached)
 			{
 				attach(obox);
