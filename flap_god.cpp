@@ -13,8 +13,8 @@
 
 /*
 *TO DO:
-*1.Sort scores.txt, display top 10 scores
-*2. Make pretty. Also pancakes need to each be different colors
+*1. Fix scores.txt so it only shows each score once
+*2. Make pretty.
 *3. Extra credit options (maybe)
 *4.Debug/test
 *5. Report. Make sure nothing in the project description was missed
