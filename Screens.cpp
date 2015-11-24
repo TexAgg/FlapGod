@@ -317,6 +317,7 @@ using namespace Graph_lib;
 			
 			ready_pressed();
 		}
+		
 		/*
 		*Tell the user that the name they have entered is invalid
 		*Tell them valid options
@@ -324,11 +325,16 @@ using namespace Graph_lib;
 		*/
 		else
 		{
-			Error_window err(Point(300,300),300,300,"ERROR!");
-			err.redraw();
+			//Error_window err(Point(300,300),300,300,"ERROR!");
+			//err.redraw();
 			
-			Graph_lib::Text badname(Point(400,400),"Enter a valid name!");
+			Graph_lib::Text badname(Point(400,400),"Enter a valid name!(2-3 alpha characters)");
 			attach(badname);
+			
+			/*
+			*When invalid name entered, attach Text 
+			*Remove text when a valid name is entered
+			*/
 			
 			redraw();
 			Fl::flush();
