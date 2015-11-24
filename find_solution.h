@@ -16,4 +16,6 @@
 vector<int> *find_solution(const vector<int>& pancakes);
 
 //Compile with g++ -std=c++14 *.cpp -lfltk -lfltk_images find_solution.o
+//Or just include it in the Makefile
+
 //Use object->size() instead of object.size(), because this returns a pointer
