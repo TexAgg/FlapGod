@@ -50,6 +50,11 @@ using namespace Graph_lib;
 		return sc1.score < sc2.score;
 	}
 	
+	bool operator>(const Score& sc1, const Score& sc2)
+	{
+		return sc1.score > sc2.score;
+	}
+	
 	bool operator==(const Score& sc1, const Score& sc2)
 	{
 		return (sc1.score==sc2.score && sc1.name==sc2.name);
@@ -59,7 +64,6 @@ using namespace Graph_lib;
 	{
 		return os << sc.score << " " << sc.name;// << endl;
 	}
-	
 	
 	istream& operator>>(istream& is, Score& sc)
 	{
@@ -73,5 +77,5 @@ using namespace Graph_lib;
 	//To compare pointers to Scores
 	bool score_compare(Score* a, Score* b)
 	{
-		return (*a < *b);
+		return (*a > *b);
 	}

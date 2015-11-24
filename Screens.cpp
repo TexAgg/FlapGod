@@ -228,6 +228,7 @@ using namespace Graph_lib;
 	//Weird stuff happens whenever you start with an empty file
     void Game_screen::scores_pressed()
     {
+		scores.clear();
         //Display the high scores
         cout << "These are the scores" << endl;
 		
@@ -244,26 +245,33 @@ using namespace Graph_lib;
 		{	
 			input>>a>>b;
 			
-			cout << "Pusing back" << a << ", " << b << endl;
+			cout << "Pushing back " << a << ", " << b << endl;
 			scores.push_back(new Score(a,b));
 		}
-		sort(scores.begin(), scores.end(),score_compare);
-		reverse(scores.begin(),scores.end());				//sort sorts into ascending order. Reverse to get highest to lowest
+		scores.erase(scores.begin()+scores.size()-1);
+		
+		
+		
+		sort(scores.begin(), scores.end(),score_compare); //sorts in descending order now, jackass
+		//reverse(scores.begin(),scores.end());				//sort sorts into ascending order. Reverse to get highest to lowest
+		
+		for(auto k : scores)
+			cout << "k is " << *k << endl;
 		
 		input.close();
 		
-		output.open("scores.txt",ios::trunc);
+		//output.open("scores.txt",ios::trunc);
 		
-		if(scores.size()!=0)
+		/* if(scores.size()!=0)
 		{
-		for (int i = 0; i<scores.size() && i <5; i++)
-		{
-			output << *scores[i] << endl;
-			
-			cout << i+1 << ": "<< *scores[i] << endl;
-		}
-		output.close();
-		}
+			for (int i = 0; i<scores.size() && i <5; i++)
+			{
+				output << *scores[i] << endl;
+				
+				cout << i+1 << ": "<< *scores[i] << endl;
+			}
+			output.close();
+		} */
 		
 		scores.clear();
     }
