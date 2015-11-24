@@ -101,8 +101,6 @@ using namespace Graph_lib;
 			
 			pancakes_ordered = true;
 			
-			//Maybe get a screen to appear for a few seconds instead of just returning straight to the main menu
-			
 			Graph_lib::Text gg(Point(300,300),"Congrats!");
 			gg.set_font_size(24);
 			attach(gg);
@@ -113,7 +111,7 @@ using namespace Graph_lib;
 			
 			detach(gg);
 			
-			system("sleep 3");
+			system("sleep 2");
 			
 			r2s_pressed();//Back to the main menu
 			
