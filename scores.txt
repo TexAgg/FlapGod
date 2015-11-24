@@ -1,5 +1,2 @@
-560 fds
-560 fds
-500 gte
-500 gte
-500 gte
+360 asd
+360 asd
