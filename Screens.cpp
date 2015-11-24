@@ -240,20 +240,11 @@ using namespace Graph_lib;
 		{	
 			input>>a>>b;
 			
-			/*
-			if(a==0 && b.empty())
-				continue;
-			*/
-			
-			//cout << a << " " << b << endl;
-			
-			cout << "Pusing back" << endl;
+			cout << "Pusing back" << a << ", " << b << endl;
 			scores.push_back(new Score(a,b));
 		}
 		sort(scores.begin(), scores.end(),score_compare);
 		reverse(scores.begin(),scores.end());				//sort sorts into ascending order. Reverse to get highest to lowest
-		
-		//cout<<scores.size()<<endl;
 		
 		input.close();
 		
@@ -263,7 +254,6 @@ using namespace Graph_lib;
 		{
 		for (int i = 0; i<scores.size() && i <5; i++)
 		{
-			//if(!(*scores[i]==Score(0,"")))
 			output << *scores[i] << endl;
 			
 			cout << i+1 << ": "<< *scores[i] << endl;
