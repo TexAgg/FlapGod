@@ -45,22 +45,6 @@ private:
 	Graph_lib::Text tech;	
 };
 
-/*
-//For when the user enters an invalid name
-struct Error_window : Graph_lib::Window
-{
-	Error_window(Point,int, int, const String&);
-	
-private:
-
-		Graph_lib::Out_box ob;
-		Graph_lib::Button bye;
-		
-		void error_action();
-		static void error_cb(Address, Address);
-};
-*/
-
 //Use this for reading/writing names and associated scores
 struct Score
 { 
