@@ -9,6 +9,7 @@ using namespace Graph_lib;
 /*
 *All these initializers are unsightly
 *There may be so many that it causes an error when I add more
+*i.e.: 'glibc detected'
 */
     Game_screen::Game_screen(Point pt, int width, int height, const string& win_name):
     Window(pt,width,height,win_name),
