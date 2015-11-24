@@ -45,6 +45,7 @@ private:
 	Graph_lib::Text tech;	
 };
 
+/*
 //For when the user enters an invalid name
 struct Error_window : Graph_lib::Window
 {
@@ -58,6 +59,7 @@ private:
 		void error_action();
 		static void error_cb(Address, Address);
 };
+*/
 
 //Use this for reading/writing names and associated scores
 struct Score
@@ -71,6 +73,7 @@ struct Score
 bool score_compare(Score*, Score*);
 
 bool operator<(const Score&, const Score&);
+bool operator==(const Score&, const Score&);
 
 //For inputting and outputting scores
 istream& operator>>(istream&, Score&);
