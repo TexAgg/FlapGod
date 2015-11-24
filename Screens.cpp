@@ -324,8 +324,13 @@ using namespace Graph_lib;
 		*/
 		else
 		{
-			Error_window err(Point(300,300),300,300,"ERROR!");
-			err.redraw();
+			//Error_window err(Point(300,300),300,300,"ERROR!");
+			//err.redraw();
+			
+			/*
+			*If(invalid) attach text
+			*Detach when valid
+			*/
 			
 			Graph_lib::Text badname(Point(400,400),"Enter a valid name!");
 			attach(badname);
