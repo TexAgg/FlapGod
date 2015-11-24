@@ -122,8 +122,8 @@ using namespace Graph_lib;
 			cout << score << " " << player_name << endl;
 			
 			//Is this neccesary?
-			output.flush();
-			output.close();
+			//output.flush();
+			//output.close();
 			
 			//scores.push_back(new Score(score,player_name));
 		}
