@@ -202,8 +202,16 @@ using namespace Graph_lib;
         hide();
     }
      
-    void Game_screen::scores_callback(Address, Address data)
+    void Game_screen::scores_callback(Address w, Address data)
     {
+        //Remove widgets
+		Fl_Widget* pw = static_cast<Fl_Widget*>(w);
+        auto allButtons = pw->parent()->array();
+        int size = pw->parent()->children();
+        for (int i = 0; i < size; ++i)
+        allButtons[i]->hide();
+        pw->parent()->redraw();
+        
         Game_screen& spc = *static_cast<Game_screen*>(data);
         spc.scores_pressed();
     }
@@ -212,7 +220,10 @@ using namespace Graph_lib;
 	//Weird stuff happens whenever you start with an empty file
     void Game_screen::scores_pressed()
     {
-		scores.clear();
+		detach_splash();
+		attach(r2s);
+		
+		//scores.clear();
         //Display the high scores
         cout << "These are the scores" << endl;
 		
