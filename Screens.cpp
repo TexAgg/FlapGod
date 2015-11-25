@@ -253,7 +253,7 @@ using namespace Graph_lib;
 		sort(scores.begin(), scores.end(),score_compare); //sorts in descending order now, jackass
 		//reverse(scores.begin(),scores.end());				//sort sorts into ascending order. Reverse to get highest to lowest
 		
-		for(auto k : scores)
+		for(int k = 0; k< scores.size();k++)
 			cout << *scores[k] << endl;
 		
 		input.close();
@@ -877,4 +877,3 @@ using namespace Graph_lib;
 		
 		cout << "The score is " << score << endl;
 	}
-
