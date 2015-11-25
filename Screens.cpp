@@ -19,16 +19,15 @@ using namespace Graph_lib;
     names2(Point(15,45),"Jared Cambell"),
     names3(Point(15,60),"Adam Espinoza"),
     main_menu(Point(310,325),80,30,Menu::vertical,"Menu"),
-    butt(Point(300,400),80,30,"CLICK",butt_callback),
 	r2s(Point(width-80,height-30),80,30,"Back",r2s_callback),
 	rules(Point(200,200),"rules.jpg",Suffix::Encoding::jpg),
 	ready(Point(200,500),80,30,"Ready!",ready_callback),
 	diff(Point(50,500),80,30,Menu::horizontal,"Difficulty"),
 	initials(Point(200,110),80,40,"Initials:"),
 	obox(Point(325,150),300,45,"Error:"),
-	confirm_name(Point(200,150),100,30,"Confirm name",confirm_name_cb)
+	confirm_name(Point(200,150),100,30,"Confirm name",confirm_name_cb),
+	choose_diff(Point(300,300),"Choose a difficuty!")
     {
-        //splash_shapes.push_back(bg);
         splash_shapes.push_back(txt);
         splash_shapes.push_back(names1);
         splash_shapes.push_back(names2);
@@ -40,11 +39,9 @@ using namespace Graph_lib;
 		splash_shapes.push_back(new Textangle(Point(310,415),80,30,"Exit"));
          
         widges.push_back(main_menu);
-        //widges.push_back(butt);
      
         txt.set_font_size(36);
          
-        //main_menu.attach(butt);
         main_menu.attach(new Button{pt,400,400,"New Game",newgame_callback});
         main_menu.attach(new Button{pt,400,400,"Rules",rules_callback});
         main_menu.attach(new Button{pt,0,0,"Scores",scores_callback});
@@ -71,7 +68,6 @@ using namespace Graph_lib;
 		pc_cb.push_back(pc9_cb);
      
         attach_splash();
-         
     }
      
 	void Game_screen::remove_pancakes()
@@ -136,19 +132,6 @@ using namespace Graph_lib;
 			cout << "You lose!" << endl;
 		}
 	}
-	 
-    void Game_screen::butt_callback(Address, Address data)
-    {
-        Game_screen& spc = *static_cast<Game_screen*>(data);
-        spc.butt_pressed();
-    }
-     
-    void Game_screen::butt_pressed()
-    {
-        cout << "Hi" << endl;
-         
-        attach_splash();
-    }
      
     void Game_screen::newgame_callback(Address w, Address data)
     {
@@ -323,6 +306,11 @@ using namespace Graph_lib;
 			detach(obox);
 			obox_attached = false;
 		}
+		if(choose_attached)
+		{
+			detach(choose_diff);
+			choose_attached = false;
+		}
 	}
 	
 	void Game_screen::confirm_name_cb(Address, Address data)
@@ -400,6 +388,10 @@ using namespace Graph_lib;
 		obox_attached = true;
 		obox.put("Choose a difficulty");
 		*/
+		
+		attach(choose_diff);
+		choose_attached = true;
+		choose_diff.set_font_size(40);
 		
 		attach(diff);
 		diff_attached = true;
@@ -700,6 +692,9 @@ using namespace Graph_lib;
 	
 	void Game_screen::pancake_maker()
 	{
+		detach(choose_diff);
+		choose_attached = false;
+		
 		turn = 0; //Reset the game
 		
 		//Make the points in order to place the buttons

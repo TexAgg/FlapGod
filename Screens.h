@@ -29,12 +29,13 @@ struct Game_screen : Graph_lib::Window
      
 private:
      
+	Graph_lib::Text choose_diff; //(Point(300,300),"Choose a difficulty!"); 
+	 
     Vector_ref<Shape> splash_shapes; 		 //All of the shapes in the splash screen
     Vector_ref<Widget> widges;  	 		 //All of the widges in the splash screen	
 	Vector<Pancake*> pcakes;				 //(Pointers to) the pancakes
 	vector<int> positions;						
 	Vector<Point*> pons; 					 //(Pointers to) all of the centers of the pancakes
-	//Vector<Displacement_vector*> dpons;
 	Vector<Graph_lib::Button*> flip_buttons; //The buttons used to flip the pancakes
 	vector<int>* solutions;
      
@@ -43,7 +44,6 @@ private:
 	Text group_num;
      
     Graph_lib::Menu main_menu;				 //The splash screen's main menu
-    Graph_lib::Button butt; 				//Test button
 	Graph_lib::Button r2s; 					//Return to Splash Screen
 	Graph_lib::Image rules;		
 	Graph_lib::Button ready;				//For when the player is ready to start the game
@@ -58,6 +58,8 @@ private:
 	bool pancakes_attached = false;
 	bool initials_attached = false;
 	bool confirm_attached = false;
+	bool choose_attached = false;
+	bool obox_attached = false;
 	
 	int difficulty; //The difficulty/number of pancakes
 	int turn = 0;
@@ -67,13 +69,10 @@ private:
 	Graph_lib::Button confirm_name;
 	Graph_lib::Out_box obox;
 	
-	bool obox_attached = false;
-	
 	void pancake_maker();					//Make the pancakes
 	void remove_pancakes();					//Remove the pancakes from the screen
 	
     //Actions
-    void butt_pressed(); 
     void newgame_pressed();
     void rules_pressed();
     void scores_pressed();
@@ -105,7 +104,6 @@ private:
 	int pstop = 0; //The pancake selected
      
     //Callbacks
-    static void butt_callback(Address, Address data);
     static void newgame_callback(Address, Address data); 	//Start a new game
     static void rules_callback(Address, Address data);  	//Show the rules
     static void scores_callback(Address, Address data); 	//Display the high scores
@@ -137,7 +135,7 @@ private:
 	static void confirm_name_cb(Address, Address data);
 	void confirm_name_action();
 	
-	Vector<Callback> pc_cb; //{pc1_cb, pc2_cb, pc3_cb, pc4_cb, pc5_cb, pc6_cb, pc7_cb, pc8_cb, pc9_cb};
+	Vector<Callback> pc_cb; //For the flip callbacks
     
 	void flip_time();	//Flip the pancakes
 	
@@ -145,12 +143,10 @@ private:
 	vector<int> ordered_ints;		//Just the ints 1-difficulty, to compare the positions to
 	void check_pancakes(); 			//Checks if the pancakes are flipped, and if they are, returns to the main menu
 	
+	//Input and output
 	ofstream output;
 	ifstream input;
 	
-	//int a=0;
-	//string b;
-	
-	Vector<Score*> scores;
+	Vector<Score*> scores; //Holds scores
 };
 
