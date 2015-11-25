@@ -200,6 +200,7 @@ using namespace Graph_lib;
         //Exit the game
         cout << "Bye!" << endl;
         hide();
+		//Segmentation fault whenever the user exits the game?
     }
      
     void Game_screen::scores_callback(Address w, Address data)
@@ -223,6 +224,10 @@ using namespace Graph_lib;
 		detach_splash();
 		attach(r2s);
 		
+		//attach(high_scores);
+		//attach(showing_scores);
+		show_scores_attached = true;
+		
 		//scores.clear();
         //Display the high scores
         cout << "These are the scores" << endl;
@@ -243,13 +248,16 @@ using namespace Graph_lib;
 			//cout << "Pushing back " << a << ", " << b << endl;
 			scores.push_back(new Score(a,b));
 		}
-		scores.erase(scores.begin()+scores.size()-1);
+		scores.erase(scores.begin()+scores.size()-1); //Delete last element, since it is somehow duplicated
 		
 		sort(scores.begin(), scores.end(),score_compare); //sorts in descending order now, jackass
 		//reverse(scores.begin(),scores.end());				//sort sorts into ascending order. Reverse to get highest to lowest
 		
 		for(int k = 0; k<scores.size() && k<5;k++)
+		{
 			cout << *scores[k] << endl;
+			//high_scores.put(*scores[k]);
+		}
 		
 		input.close();
 		
@@ -321,6 +329,12 @@ using namespace Graph_lib;
 		{
 			detach(choose_diff);
 			choose_attached = false;
+		}
+		if(show_scores_attached)
+		{
+			//detach(high_scores);
+			//detach(showing_scores);
+			show_scores_attached = false;
 		}
 	}
 	
