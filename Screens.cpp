@@ -250,13 +250,11 @@ using namespace Graph_lib;
 		}
 		scores.erase(scores.begin()+scores.size()-1);
 		
-		
-		
 		sort(scores.begin(), scores.end(),score_compare); //sorts in descending order now, jackass
 		//reverse(scores.begin(),scores.end());				//sort sorts into ascending order. Reverse to get highest to lowest
 		
 		for(auto k : scores)
-			cout << "k is " << *k << endl;
+			cout << *scores[k] << endl;
 		
 		input.close();
 		
