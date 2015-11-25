@@ -245,7 +245,7 @@ using namespace Graph_lib;
 		{	
 			input>>a>>b;
 			
-			cout << "Pushing back " << a << ", " << b << endl;
+			//cout << "Pushing back " << a << ", " << b << endl;
 			scores.push_back(new Score(a,b));
 		}
 		scores.erase(scores.begin()+scores.size()-1);
