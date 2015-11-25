@@ -93,6 +93,7 @@ using namespace Graph_lib;
 		redraw();
 	} 
 	
+	//Sometimes the game doesnt end when they are sorted
 	void Game_screen::check_pancakes()//Called in each flip button's callback
 	{
 		if (positions==ordered_ints)
@@ -794,7 +795,6 @@ using namespace Graph_lib;
 		pancakes_attached=true;
 		redraw();
 		
-		/*
 		//Where are the pancakes
 		for(int i = 0; i<difficulty; i++)
 		{
@@ -802,7 +802,6 @@ using namespace Graph_lib;
 			cout << " and position " << pcakes[i]->get_position() << endl;
 		}	
 		cout<<"\n";
-		*/
 	}
 
 	void Game_screen::flip_time()
@@ -825,7 +824,7 @@ using namespace Graph_lib;
 		for(int i = 0; i < positions.size();i++)
 			cout << positions[i] <<",";
 		cout<<"\n"
-		*/;	
+		*/
 		
 		for(int i = 0; i<difficulty;i++)
 		{
@@ -863,7 +862,6 @@ using namespace Graph_lib;
 		
 		redraw();
 		
-		/*
 		//Where are the pancakes
 		for(int i = 0; i<difficulty; i++)
 		{
@@ -871,7 +869,6 @@ using namespace Graph_lib;
 			cout << " and position " << pcakes[i]->get_position() << endl;
 		}	
 		cout<<"\n";
-		*/
 		
 		score = (100 - 10 * (turn - solutions->size())) * difficulty;
 		
