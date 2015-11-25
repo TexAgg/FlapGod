@@ -1,9 +1,6 @@
 /*
 *Screens.h
 */
-// #include <algorithm>
-
-//Will need shapes to cover buttons once background is done
  
 #include "std_lib_facilities_4.h"
 #include "Graph.h"
