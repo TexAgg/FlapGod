@@ -72,9 +72,9 @@ using namespace Graph_lib;
     
     void Game_screen::print_positions()
     {
-    	for (int i = 0; i < difficulty; i++)
+    	for (int k = 0; k < difficulty; k++)
     	{
-    		cout << positions[i] << endl;
+    		cout << positions[k] << endl;
     	}
     }
      
