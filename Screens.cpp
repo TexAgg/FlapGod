@@ -69,6 +69,14 @@ using namespace Graph_lib;
      
         attach_splash();
     }
+    
+    void Game_screen::print_positions()
+    {
+    	for (int i = 0; i < difficulty; i++)
+    	{
+    		cout << positions[i] << endl;
+    	}
+    }
      
 	void Game_screen::remove_pancakes()
 	{
@@ -736,6 +744,7 @@ using namespace Graph_lib;
 		}
 	
 		cout << "Before shuffle" << endl;
+		print_positions();
 		
 		random_shuffle(positions.begin(),positions.end());
 		//Make sure the pancakes don't start out in order
@@ -746,6 +755,9 @@ using namespace Graph_lib;
 			
 			cout << "Shuffling pancakes" << endl;
 		}
+		
+		cout << "After shuffle" << endl;
+		print_positions();
 		
 		pancakes_ordered=false;
 		
