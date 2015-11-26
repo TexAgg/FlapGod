@@ -245,10 +245,6 @@ using namespace Graph_lib;
 		
 		input.open("scores.txt");
 		
-		/*
-		*The error is either in here 
-		*or in the operator definition
-		*/
 		while(input)
 		{	
 			input>>a>>b;
