@@ -831,7 +831,7 @@ using namespace Graph_lib;
 		cout << "Turn " << turn << endl;
 		
 		cout << "Before reverse:" << endl;
-		for(int i = 0; i < positions.size();i++)
+		for(int i = 0; i < positions.size(); i++)
 			cout << positions[i] <<",";
 		cout<<"\n";	
 		
@@ -839,11 +839,11 @@ using namespace Graph_lib;
 		reverse(positions.begin(), positions.begin()+pstop );
 		
 		cout << "After reverse:" << endl;
-		for(int i = 0; i < positions.size();i++)
+		for(int i = 0; i < positions.size(); i++)
 			cout << positions[i] <<",";
 		cout<<"\n"
 		
-		for(int i = 0; i<difficulty;i++)
+		for(int i = 0; i<difficulty; i++)
 		{
 			detach(*pcakes[i]);
 		}
@@ -859,7 +859,7 @@ using namespace Graph_lib;
 			//pcakes.push_back(new Pancake(*pons[i],75+25*i,25));
 			pcakes.push_back(new Pancake(*pons[i],75+25*positions[i],25));
 		}
-		for(int i = 0; i < pcakes.size();i++)
+		for(int i = 0; i < pcakes.size(); i++)
 		{
 			//cout << "Moving pancake " << i << endl; 
 			
