@@ -13,11 +13,11 @@ using namespace Graph_lib;
     names1(Point(15,30),"Matt Gaikema"),
     names2(Point(15,45),"Jared Cambell"),
     names3(Point(15,60),"Adam Espinoza"),
-    main_menu(Point(310,325),80,30,Menu::vertical,"Menu"),
+    //main_menu(Point(310,325),80,30,Menu::vertical,"Menu"),
 	r2s(Point(width-80,height-30),80,30,"Back",r2s_callback),
 	rules(Point(200,200),"rules.jpg",Suffix::Encoding::jpg),
 	ready(Point(200,500),80,30,"Ready!",ready_callback),
-	diff(Point(50,500),80,30,Menu::horizontal,"Difficulty"),
+	//diff(Point(50,500),80,30,Menu::horizontal,"Difficulty"),
 	initials(Point(200,110),80,40,"Initials:"),
 	obox(Point(325,150),300,45,"Error:"),
 	confirm_name(Point(200,150),100,30,"Confirm name",confirm_name_cb),
@@ -458,7 +458,7 @@ using namespace Graph_lib;
 		choose_attached = true;
 		choose_diff.set_font_size(40);
 		
-		attach(diff);
+		//attach(diff);
 		diff_attached = true;
 		
 		cout << "Hello, " << player_name << endl;
@@ -840,7 +840,9 @@ using namespace Graph_lib;
 		//Detach other stuff
 		if(diff_attached)
 		{
-			diff.hide();
+			for(auto k : diff_vec)
+				k->hide();
+			//diff.hide();
 			diff_attached=false;
 		}
 		

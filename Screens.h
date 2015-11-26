@@ -47,11 +47,11 @@ private:
     Text names1, names2, names3; //Our names
 	Text group_num;
      
-    Graph_lib::Menu main_menu;				 //The splash screen's main menu
+    //Graph_lib::Menu main_menu;				 //The splash screen's main menu
 	Graph_lib::Button r2s; 					//Return to Splash Screen
 	Graph_lib::Image rules;		
 	Graph_lib::Button ready;				//For when the player is ready to start the game
-	Graph_lib::Menu diff;					//Select the difficulty
+	//Graph_lib::Menu diff;					//Select the difficulty
 	Graph_lib::In_box initials; 
 	//Graph_lib::Menu flip_buttons;
 	//Graph_lib::Text choose_diff;
