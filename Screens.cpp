@@ -68,14 +68,18 @@ using namespace Graph_lib;
 	//destructor
 	Game_screen::~Game_screen()
 	{
+		//Delete all pointers used
 		for(auto k : pcakes)
 			delete k;
 		for(auto k : pons)
 			delete k;
 		for(auto k : scores)
 			delete k;
+		for(auto k : flip_buttons)
+			delete k;
 		delete high_scores;
 		delete solutions;
+		delete showing_scores;
 	}
     
     void Game_screen::print_positions()
@@ -137,7 +141,6 @@ using namespace Graph_lib;
 			//Is this neccesary?
 			output.flush();
 			output.close();
-			
 		}
 		
 		if(score < 0)
@@ -188,7 +191,7 @@ using namespace Graph_lib;
         for (int i = 0; i < size; ++i)
             allButtons[i]->hide();
         pw->parent()->redraw();
-		
+	
 		Game_screen& spc = *static_cast<Game_screen*>(data);
         spc.rules_pressed();
     }
@@ -343,7 +346,7 @@ using namespace Graph_lib;
 		if(show_scores_attached)
 		{
 			detach(*high_scores);
-			delete high_scores;
+			//delete high_scores;
 			
 			//detach(*showing_scores);
 			//delete showing_scores;
