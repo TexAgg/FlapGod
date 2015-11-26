@@ -405,15 +405,7 @@ using namespace Graph_lib;
 			detach(ready);
 			ready_attached = false;
 		}
-		
-		//attach(choose_diff);
-		
-		/*
-		attach(obox);
-		obox_attached = true;
-		obox.put("Choose a difficulty");
-		*/
-		
+	
 		attach(choose_diff);
 		choose_attached = true;
 		choose_diff.set_font_size(40);
@@ -743,6 +735,8 @@ using namespace Graph_lib;
 			//pons.push_back(new Point(400,25+55*positions[i]));
 		}
 	
+		cout << "Before shuffle" << endl;
+		
 		random_shuffle(positions.begin(),positions.end());
 		//Make sure the pancakes don't start out in order
 		//Doesn't work for 2 pancakes
@@ -758,6 +752,7 @@ using namespace Graph_lib;
 		for(int i = 0; i<positions.size();i++)
 			positions[i]++;
 		
+		//Find solution
 		solutions=find_solution(positions);
 		
 		for(int i = 0; i<positions.size();i++)
@@ -794,13 +789,6 @@ using namespace Graph_lib;
 			diff.hide();
 			diff_attached=false;
 		}
-		/*
-		if(obox_attached)
-		{
-			detach(obox);
-			obox_attached = false;
-		}
-		*/
 		
 		for(int i = 0; i < pcakes.size();i++)
 		{
@@ -830,22 +818,18 @@ using namespace Graph_lib;
 		turn++;
 		cout << "Turn " << turn << endl;
 		
-		/*
 		cout << "Before reverse:" << endl;
 		for(int i = 0; i < positions.size();i++)
 			cout << positions[i] <<",";
 		cout<<"\n";	
-		*/
 		
 		//Switch the positions of the pancakes in the vector and then use that to move them on screen
 		reverse(positions.begin(), positions.begin()+pstop );
 		
-		/*
 		cout << "After reverse:" << endl;
 		for(int i = 0; i < positions.size();i++)
 			cout << positions[i] <<",";
 		cout<<"\n"
-		*/
 		
 		for(int i = 0; i<difficulty;i++)
 		{
