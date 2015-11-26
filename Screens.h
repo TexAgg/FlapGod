@@ -36,7 +36,7 @@ private:
 	vector<int> positions;						
 	Vector<Point*> pons; 					 //(Pointers to) all of the centers of the pancakes
 	Vector<Graph_lib::Button*> flip_buttons; //The buttons used to flip the pancakes
-	vector<int>* solutions;
+	vector<int>* solutions = nullptr;
      
     Text txt; //The game name 
     Text names1, names2, names3; //Our names
@@ -144,9 +144,9 @@ private:
 	
 	void print_positions();
 	
-	//Adding these creates a segmentation fault
-	//Graph_lib::Out_box* high_scores; //high_scores(Point(300,200),250,350,"High scores!")
-	//Graph_lib::Text* showing_scores; //showing_scores(Point(300,150),"These are the high scores!")
+	//This works for the outbox but not for the text
+	Graph_lib::Out_box* high_scores = nullptr; //high_scores(Point(300,200),250,350,"High scores!")
+	Graph_lib::Text* showing_scores = nullptr; //showing_scores(Point(300,150),"These are the high scores!")
 	bool show_scores_attached = false;
 	
 	//Input and output

@@ -231,10 +231,11 @@ using namespace Graph_lib;
 		detach_splash();
 		attach(r2s);
 		
-		//high_scores = new Out_box(Point(300,200),250,350,"High scores!");
+		high_scores = new Out_box(Point(300,200),250,350,"High scores!");
+		//showing_scores = new Text(Point(300,150),"These are the high scores!");
 		
-		//attach(*high_scores);
-		//attach(showing_scores);
+		attach(*high_scores);
+		//attach(*showing_scores);
 		show_scores_attached = true;
 		
 		//scores.clear();
@@ -289,9 +290,7 @@ using namespace Graph_lib;
 	}
 	
 	/*
-	*Maybe let objects detach themselves when they go out of scope instead of 
-	*dealing with this many messy booleans.
-	*JK that causes a segmentation fault
+	*Would have been more efficient to reuse the same pointers
 	*/
 	void Game_screen::r2s_pressed()
 	{
@@ -337,10 +336,11 @@ using namespace Graph_lib;
 		}
 		if(show_scores_attached)
 		{
-			//detach(*high_scores);
-			//delete high_scores;
+			detach(*high_scores);
+			delete high_scores;
 			
-			//detach(showing_scores);
+			//detach(*showing_scores);
+			//delete showing_scores;
 			
 			show_scores_attached = false;
 		}
@@ -823,6 +823,8 @@ using namespace Graph_lib;
 			cout << " and position " << pcakes[i]->get_position() << endl;
 		}	
 		cout<<"\n";
+		
+		delete solutions;
 	}
 
 	void Game_screen::flip_time()
