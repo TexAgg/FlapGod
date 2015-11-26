@@ -6,11 +6,6 @@
  
 using namespace Graph_lib;
 
-/*
-*All these initializers are unsightly
-*There may be so many that it causes an error when I add more
-*i.e.: 'glibc detected'. Maybe memory leak?
-*/
     Game_screen::Game_screen(Point pt, int width, int height, const string& win_name):
     Window(pt,width,height,win_name),
     txt(Point(300,300),"Flap God"),
@@ -70,6 +65,7 @@ using namespace Graph_lib;
         attach_splash();
     }
 	
+	//destructor
 	Game_screen::~Game_screen()
 	{
 		for(auto k : pcakes)
@@ -236,7 +232,6 @@ using namespace Graph_lib;
         spc.scores_pressed();
     }
      
-	//Fix this: Prints every score twice
 	//Weird stuff happens whenever you start with an empty file
     void Game_screen::scores_pressed()
     {
