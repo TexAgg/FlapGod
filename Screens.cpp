@@ -69,6 +69,11 @@ using namespace Graph_lib;
 	Game_screen::~Game_screen()
 	{
 		//Delete all pointers used
+		delete splash_shapes[8];
+		delete splash_shapes[7];
+		delete splash_shapes[6];
+		delete splash_shapes[5];
+		
 		for(auto k : pcakes)
 			delete k;
 		for(auto k : pons)
