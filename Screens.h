@@ -29,6 +29,10 @@ struct Game_screen : Graph_lib::Window
      
 private:
      
+	Vector<Graph_lib::Button*> main_menu_vec;
+	Vector<Graph_lib::Button*> diff_vec;
+	Vector<Textangle*> texties; 
+	 
 	Graph_lib::Text choose_diff; //(Point(300,300),"Choose a difficulty!"); 
 	 
     Vector_ref<Shape> splash_shapes; 		 //All of the shapes in the splash screen

@@ -28,29 +28,45 @@ using namespace Graph_lib;
         splash_shapes.push_back(names2);
         splash_shapes.push_back(names3);
 		splash_shapes.push_back(group_num);
-		splash_shapes.push_back(new Textangle(Point(310,325),80,30,"New game"));
-		splash_shapes.push_back(new Textangle(Point(310,355),80,30,"Rules"));
-		splash_shapes.push_back(new Textangle(Point(310,385),80,30,"Scores"));
-		splash_shapes.push_back(new Textangle(Point(310,415),80,30,"Exit"));
+		
+		texties.push_back(new Textangle(Point(310,325),80,30,"New game"));
+		texties.push_back(new Textangle(Point(310,355),80,30,"Rules"));
+		texties.push_back(new Textangle(Point(310,385),80,30,"Scores"));
+		texties.push_back(new Textangle(Point(310,415),80,30,"Exit"));
+		
+		//for(int i = 0; i < main_menu_vec.size();i++)
+		for(auto i : texties)
+			splash_shapes.push_back(*i);	
          
-        widges.push_back(main_menu);
+        //widges.push_back(main_menu);
      
         txt.set_font_size(36);
          
-        main_menu.attach(new Button{pt,400,400,"New Game",newgame_callback});
-        main_menu.attach(new Button{pt,400,400,"Rules",rules_callback});
-        main_menu.attach(new Button{pt,0,0,"Scores",scores_callback});
-        main_menu.attach(new Button{pt,0,0,"Exit",exitgame_callback});
-        main_menu.attach(*this);
+        main_menu_vec.push_back(new Button{Point(310,325),80,30,"New Game",newgame_callback});
+        main_menu_vec.push_back(new Button{Point(310,355),80,30,"Rules",rules_callback});
+        main_menu_vec.push_back(new Button{Point(310,385),80,30,"Scores",scores_callback});
+        main_menu_vec.push_back(new Button{Point(310,415),80,30,"Exit",exitgame_callback});
 		
-		diff.attach(new Button{pt,0,0,"2",diff2_callback});
-		diff.attach(new Button{pt,0,0,"3",diff3_callback});
-		diff.attach(new Button{pt,0,0,"4",diff4_callback});
-		diff.attach(new Button{pt,0,0,"5",diff5_callback});
-		diff.attach(new Button{pt,0,0,"6",diff6_callback});
-		diff.attach(new Button{pt,0,0,"7",diff7_callback});
-		diff.attach(new Button{pt,0,0,"8",diff8_callback});
-		diff.attach(new Button{pt,0,0,"9",diff9_callback});
+		for(auto i : main_menu_vec)
+		{
+			//main_menu.attach(*i);
+			widges.push_back(*i);
+		}
+        //main_menu.attach(*this);
+		
+		diff_vec.push_back(new Button{Point(50,500),80,30,"2",diff2_callback});
+		diff_vec.push_back(new Button{Point(130,500),80,30,"3",diff3_callback});
+		diff_vec.push_back(new Button{Point(210,500),80,30,"4",diff4_callback});
+		diff_vec.push_back(new Button{Point(290,500),80,30,"5",diff5_callback});
+		diff_vec.push_back(new Button{Point(370,500),80,30,"6",diff6_callback});
+		diff_vec.push_back(new Button{Point(450,500),80,30,"7",diff7_callback});
+		diff_vec.push_back(new Button{Point(530,500),80,30,"8",diff8_callback});
+		diff_vec.push_back(new Button{Point(610,500),80,30,"9",diff9_callback});
+		
+		/*
+		for(auto i : diff_vec)
+			diff.attach(*i);
+		*/
 		
 		pc_cb.push_back(pc1_cb);
 		pc_cb.push_back(pc2_cb);
@@ -69,11 +85,12 @@ using namespace Graph_lib;
 	Game_screen::~Game_screen()
 	{
 		//Delete all pointers used
-		delete splash_shapes[8];
-		delete splash_shapes[7];
-		delete splash_shapes[6];
-		delete splash_shapes[5];
-		
+		for(auto k : diff_vec)
+			delete k;
+		for(auto k : texties)
+			delete k;
+		for (auto k : main_menu_vec)
+			delete k;
 		for(auto k : pcakes)
 			delete k;
 		for(auto k : pons)
@@ -315,7 +332,11 @@ using namespace Graph_lib;
 		if (diff_attached)
 		{
 			//detach(choose_diff);
-			diff.hide();
+			//diff.hide();
+			
+			for(auto k : diff_vec)
+				detach(*k);
+			
 			diff_attached = false;
 		}
 		if (ready_attached)
@@ -428,7 +449,9 @@ using namespace Graph_lib;
 			ready_attached = false;
 		}
 	
-		attach(choose_diff);
+		//attach(choose_diff);
+		for(auto k : diff_vec)
+			attach(*k);
 		choose_attached = true;
 		choose_diff.set_font_size(40);
 		
@@ -731,7 +754,9 @@ using namespace Graph_lib;
 	
 	void Game_screen::pancake_maker()
 	{
-		detach(choose_diff);
+		//detach(choose_diff);
+		for(auto k : diff_vec)
+			detach(*k);
 		choose_attached = false;
 		
 		turn = 0; //Reset the game
