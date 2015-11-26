@@ -69,6 +69,18 @@ using namespace Graph_lib;
      
         attach_splash();
     }
+	
+	Game_screen::~Game_screen()
+	{
+		for(auto k : pcakes)
+			delete k;
+		for(auto k : pons)
+			delete k;
+		for(auto k : scores)
+			delete k;
+		delete high_scores;
+		delete solutions;
+	}
     
     void Game_screen::print_positions()
     {
@@ -823,7 +835,7 @@ using namespace Graph_lib;
 		}	
 		cout<<"\n";
 		
-		delete solutions;
+		//delete solutions;
 	}
 
 	void Game_screen::flip_time()

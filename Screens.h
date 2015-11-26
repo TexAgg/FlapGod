@@ -19,6 +19,7 @@ using namespace Graph_lib;
 struct Game_screen : Graph_lib::Window
 {
     Game_screen(Point, int, int, const string&); //Constructor
+	~Game_screen();
      
 	//Attach and detach the splash screen 
     void attach_splash();
@@ -145,13 +146,13 @@ private:
 	void print_positions(); //For bug checking
 	
 	Graph_lib::Out_box* high_scores = nullptr; //high_scores(Point(300,200),250,350,"High scores!")
-	Graph_lib::Text* showing_scores = nullptr; //showing_scores(Point(300,150),"These are the high scores!")
+	//Graph_lib::Text* showing_scores = nullptr; //showing_scores(Point(300,150),"These are the high scores!")
 	bool show_scores_attached = false;
 	
 	//Input and output
 	ofstream output;
 	ifstream input;
-	stringstream sstream;
+	//stringstream sstream;
 	
 	Vector<Score*> scores; //Holds scores
 };
