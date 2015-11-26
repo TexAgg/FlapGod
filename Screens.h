@@ -145,8 +145,8 @@ private:
 	void print_positions();
 	
 	//Adding these creates a segmentation fault
-	//Graph_lib::Out_box high_scores; {high_scores(Point(300,200),250,350,"High scores!")}
-	//Graph_lib::Text showing_scores; {showing_scores(Point(300,150),"These are the high scores!")}
+	//Graph_lib::Out_box high_scores; //{high_scores(Point(300,200),250,350,"High scores!")}
+	//Graph_lib::Text showing_scores; //{showing_scores(Point(300,150),"These are the high scores!")}
 	bool show_scores_attached = false;
 	
 	//Input and output

@@ -841,7 +841,7 @@ using namespace Graph_lib;
 		cout << "After reverse:" << endl;
 		for(int i = 0; i < positions.size(); i++)
 			cout << positions[i] <<",";
-		cout<<"\n"
+		cout<<"\n";
 		
 		for(int i = 0; i < difficulty; i++)
 		{
