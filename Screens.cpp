@@ -130,7 +130,6 @@ using namespace Graph_lib;
 			output.flush();
 			output.close();
 			
-			//scores.push_back(new Score(score,player_name));
 		}
 		
 		if(score < 0)
@@ -232,7 +231,9 @@ using namespace Graph_lib;
 		detach_splash();
 		attach(r2s);
 		
-		//attach(high_scores);
+		//high_scores = new Out_box(Point(300,200),250,350,"High scores!");
+		
+		//attach(*high_scores);
 		//attach(showing_scores);
 		show_scores_attached = true;
 		
@@ -340,8 +341,11 @@ using namespace Graph_lib;
 		}
 		if(show_scores_attached)
 		{
-			//detach(high_scores);
+			//detach(*high_scores);
+			//delete high_scores;
+			
 			//detach(showing_scores);
+			
 			show_scores_attached = false;
 		}
 	}
