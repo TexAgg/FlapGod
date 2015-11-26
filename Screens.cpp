@@ -745,6 +745,7 @@ using namespace Graph_lib;
 	
 		random_shuffle(positions.begin(),positions.end());
 		//Make sure the pancakes don't start out in order
+		//Doesn't work for 2 pancakes
 		while(positions==ordered_ints)
 		{
 			random_shuffle(positions.begin(),positions.end());
