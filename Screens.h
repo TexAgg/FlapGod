@@ -142,9 +142,8 @@ private:
 	vector<int> ordered_ints;		//Just the ints 1-difficulty, to compare the positions to
 	void check_pancakes(); 			//Checks if the pancakes are flipped, and if they are, returns to the main menu
 	
-	void print_positions();
+	void print_positions(); //For bug checking
 	
-	//This works for the outbox but not for the text
 	Graph_lib::Out_box* high_scores = nullptr; //high_scores(Point(300,200),250,350,"High scores!")
 	Graph_lib::Text* showing_scores = nullptr; //showing_scores(Point(300,150),"These are the high scores!")
 	bool show_scores_attached = false;
@@ -152,7 +151,7 @@ private:
 	//Input and output
 	ofstream output;
 	ifstream input;
-	//stringstream sstream;
+	stringstream sstream;
 	
 	Vector<Score*> scores; //Holds scores
 };

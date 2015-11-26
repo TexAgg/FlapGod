@@ -238,7 +238,6 @@ using namespace Graph_lib;
 		//attach(*showing_scores);
 		show_scores_attached = true;
 		
-		//scores.clear();
         //Display the high scores
         cout << "These are the scores" << endl;
 		
@@ -262,7 +261,7 @@ using namespace Graph_lib;
 		for(int k = 0; k<scores.size() && k<5;k++)
 		{
 			cout << *scores[k] << endl;
-			//high_scores.put(*scores[k]);
+			//high_scores->put(*scores[k]);
 		}
 		
 		input.close();
