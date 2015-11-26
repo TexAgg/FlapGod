@@ -843,7 +843,7 @@ using namespace Graph_lib;
 			cout << positions[i] <<",";
 		cout<<"\n"
 		
-		for(int i = 0; i<difficulty; i++)
+		for(int i = 0; i < difficulty; i++)
 		{
 			detach(*pcakes[i]);
 		}
