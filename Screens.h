@@ -36,7 +36,7 @@ private:
 	Graph_lib::Text choose_diff; //(Point(300,300),"Choose a difficulty!"); 
 	 
     Vector<Shape> splash_shapes; 		 //All of the shapes in the splash screen
-    Vector<Widget> widges;  	 		 //All of the widges in the splash screen	
+    Vector_ref<Widget> widges;  	 		 //All of the widges in the splash screen	
 	Vector<Pancake*> pcakes;				 //(Pointers to) the pancakes
 	vector<int> positions;						
 	Vector<Point*> pons; 					 //(Pointers to) all of the centers of the pancakes
