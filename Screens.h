@@ -142,6 +142,8 @@ private:
 	vector<int> ordered_ints;		//Just the ints 1-difficulty, to compare the positions to
 	void check_pancakes(); 			//Checks if the pancakes are flipped, and if they are, returns to the main menu
 	
+	void print_positions();
+	
 	//Adding these creates a segmentation fault
 	//Graph_lib::Out_box high_scores; {high_scores(Point(300,200),250,350,"High scores!")}
 	//Graph_lib::Text showing_scores; {showing_scores(Point(300,150),"These are the high scores!")}
