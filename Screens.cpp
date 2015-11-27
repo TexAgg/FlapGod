@@ -21,13 +21,15 @@ using namespace Graph_lib;
 	initials(Point(200,110),80,40,"Initials:"),
 	obox(Point(325,150),300,45,"Error:"),
 	confirm_name(Point(200,150),100,30,"Confirm name",confirm_name_cb),
-	choose_diff(Point(300,300),"Choose a difficuty!")
+	choose_diff(Point(300,300),"Choose a difficuty!"),
+	title_screen(Point(1,1),"FlapGod.jpg",Suffix::Encoding::jpg)
     {
-        splash_shapes.push_back(txt);
-        splash_shapes.push_back(names1);
-        splash_shapes.push_back(names2);
-        splash_shapes.push_back(names3);
-		splash_shapes.push_back(group_num);
+        //splash_shapes.push_back(txt);
+        //splash_shapes.push_back(names1);
+        //splash_shapes.push_back(names2);
+        //splash_shapes.push_back(names3);
+		//splash_shapes.push_back(group_num);
+		splash_shapes.push_back(title_screen);
 		
 		texties.push_back(new Textangle(Point(310,325),80,30,"New game"));
 		texties.push_back(new Textangle(Point(310,355),80,30,"Rules"));
@@ -84,6 +86,9 @@ using namespace Graph_lib;
 	//destructor
 	Game_screen::~Game_screen()
 	{	
+		detach_splash();
+		//splash_shapes.clear();
+		
 		//Delete all pointers used
 		for(auto k : diff_vec)
 			delete k;
