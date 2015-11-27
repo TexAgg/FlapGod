@@ -13,7 +13,7 @@
 
 /*
 *TO DO:
-*1. Fix scores.txt so it only shows each score once
+*1. Still causes a fucking segmentation fault when you quit the game
 *2. Make pretty.
 *3. Extra credit options (maybe)
 *4.Debug/test

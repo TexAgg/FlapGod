@@ -36,7 +36,7 @@ using namespace Graph_lib;
 		
 		//for(int i = 0; i < main_menu_vec.size();i++)
 		for(auto i : texties)
-			splash_shapes.push_back(*i);	
+			//splash_shapes.push_back(*i);	
          
         //widges.push_back(main_menu);
      
@@ -50,7 +50,7 @@ using namespace Graph_lib;
 		for(auto i : main_menu_vec)
 		{
 			//main_menu.attach(*i);
-			widges.push_back(*i);
+			//widges.push_back(*i);
 		}
         //main_menu.attach(*this);
 		
@@ -83,7 +83,7 @@ using namespace Graph_lib;
 	
 	//destructor
 	Game_screen::~Game_screen()
-	{
+	{	
 		//Delete all pointers used
 		for(auto k : diff_vec)
 			delete k;
@@ -102,6 +102,7 @@ using namespace Graph_lib;
 		delete high_scores;
 		delete solutions;
 		delete showing_scores;
+		
 	}
     
     void Game_screen::print_positions()
@@ -173,15 +174,17 @@ using namespace Graph_lib;
 		}
 	}
      
-    void Game_screen::newgame_callback(Address w, Address data)
+    void Game_screen::newgame_callback(Address, Address data)
     {
         //Remove widgets
+		/*
 		Fl_Widget* pw = static_cast<Fl_Widget*>(w);
         auto allButtons = pw->parent()->array();
         int size = pw->parent()->children();
         for (int i = 0; i < size; ++i)
             allButtons[i]->hide();
         pw->parent()->redraw();
+		*/
 		
         Game_screen& spc = *static_cast<Game_screen*>(data);
         spc.newgame_pressed();
@@ -204,15 +207,17 @@ using namespace Graph_lib;
 		confirm_attached = true;
     }
      
-    void Game_screen::rules_callback(Address w, Address data)
+    void Game_screen::rules_callback(Address, Address data)
     {
         //Remove widgets
+		/*
 		Fl_Widget* pw = static_cast<Fl_Widget*>(w);
         auto allButtons = pw->parent()->array();
         int size = pw->parent()->children();
         for (int i = 0; i < size; ++i)
             allButtons[i]->hide();
         pw->parent()->redraw();
+		*/
 	
 		Game_screen& spc = *static_cast<Game_screen*>(data);
         spc.rules_pressed();
@@ -246,15 +251,17 @@ using namespace Graph_lib;
 		//Segmentation fault whenever the user exits the game?
     }
      
-    void Game_screen::scores_callback(Address w, Address data)
+    void Game_screen::scores_callback(Address, Address data)
     {
         //Remove widgets
+		/*
 		Fl_Widget* pw = static_cast<Fl_Widget*>(w);
         auto allButtons = pw->parent()->array();
         int size = pw->parent()->children();
         for (int i = 0; i < size; ++i)
         allButtons[i]->hide();
         pw->parent()->redraw();
+		*/
         
         Game_screen& spc = *static_cast<Game_screen*>(data);
         spc.scores_pressed();
@@ -267,10 +274,10 @@ using namespace Graph_lib;
 		attach(r2s);
 		
 		high_scores = new Out_box(Point(300,200),250,350,"High scores!");
-		//showing_scores = new Text(Point(300,150),"These are the high scores!");
+		showing_scores = new Text(Point(300,150),"These are the high scores!");
 		
 		attach(*high_scores);
-		//attach(*showing_scores);
+		attach(*showing_scores);
 		show_scores_attached = true;
 		
         //Display the high scores
@@ -298,9 +305,10 @@ using namespace Graph_lib;
 			cout << *scores[k] << endl;
 			//high_scores->put(*scores[k]);
 			
-			//ost << *scores[k];
+			ost << *scores[k];
 			//high_scores->put(ost.str());
 		}
+		ost.str("");
 		
 		input.close();
 		
@@ -388,7 +396,7 @@ using namespace Graph_lib;
 			detach(*high_scores);
 			//delete high_scores;
 			
-			//detach(*showing_scores);
+			detach(*showing_scores);
 			//delete showing_scores;
 			
 			show_scores_attached = false;
@@ -741,12 +749,18 @@ using namespace Graph_lib;
      
     void Game_screen::attach_splash()
     {
-        for(int i = 0; i < widges.size(); i++)
-            attach(widges[i]);
+        //for(int i = 0; i < widges.size(); i++)
+            //attach(widges[i]);
+		
+		for (auto k : main_menu_vec)
+			attach(*k);
          
         for(int i = 0; i < splash_shapes.size(); i++)
             attach(splash_shapes[i]);
          
+		for (auto k : texties)
+			attach(*k);
+		
         redraw();
     }
      
@@ -762,6 +776,12 @@ using namespace Graph_lib;
          
         for(int i = 0; i < splash_shapes.size(); i++)
             detach(splash_shapes[i]);
+		
+		for ( auto k : main_menu_vec)
+			detach(*k);
+		
+		for (auto k : texties)
+			detach(*k);
          
         redraw();
     }
