@@ -32,6 +32,7 @@ private:
 	Vector<Graph_lib::Button*> main_menu_vec;
 	Vector<Graph_lib::Button*> diff_vec;
 	Vector<Textangle*> texties; 
+	Vector<Text*> scores_text; 
 	 
 	Graph_lib::Text choose_diff; //(Point(300,300),"Choose a difficulty!"); 
 

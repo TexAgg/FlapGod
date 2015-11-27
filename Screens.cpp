@@ -99,6 +99,8 @@ using namespace Graph_lib;
 			delete k;
 		for(auto k : flip_buttons)
 			delete k;
+		for(auto k : scores_text)
+			delete k;
 		delete high_scores;
 		delete solutions;
 		delete showing_scores;
@@ -307,7 +309,13 @@ using namespace Graph_lib;
 			
 			ost << *scores[k];
 			//high_scores->put(ost.str());
+			scores_text.push_back(new Text(Point(100,75+20*k),ost.str()));
+			ost.str("");
 		}
+		
+		for(auto k :scores_text)
+			attach(*k);
+		
 		ost.str("");
 		
 		input.close();
@@ -398,6 +406,9 @@ using namespace Graph_lib;
 			
 			detach(*showing_scores);
 			//delete showing_scores;
+			
+			for(auto k : scores_text)
+				detach(*k);
 			
 			show_scores_attached = false;
 		}
