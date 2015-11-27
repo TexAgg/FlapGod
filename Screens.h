@@ -153,10 +153,13 @@ private:
 	Graph_lib::Text* showing_scores = nullptr; //showing_scores(Point(300,150),"These are the high scores!")
 	bool show_scores_attached = false;
 	
+	//string strm;
+	
 	//Input and output
 	ofstream output;
 	ifstream input;
-	//stringstream sstream;
+	//istringstream ist;
+	//ostringstream ost;
 	
 	Vector<Score*> scores; //Holds scores
 };

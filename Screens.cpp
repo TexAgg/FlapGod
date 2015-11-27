@@ -297,9 +297,20 @@ using namespace Graph_lib;
 		{
 			cout << *scores[k] << endl;
 			//high_scores->put(*scores[k]);
+			
+			//ost << *scores[k];
+			//high_scores->put(ost.str());
 		}
 		
 		input.close();
+		
+		/*
+		for(auto k : scores)
+		{
+			ost << *k;
+			high_scores->put(ost.str());	
+		}
+		*/
 		
 		//output.open("scores.txt",ios::trunc);
 		
