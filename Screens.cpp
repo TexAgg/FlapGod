@@ -22,7 +22,7 @@ using namespace Graph_lib;
 	obox(Point(325,150),300,45,"Error:"),
 	confirm_name(Point(200,150),100,30,"Confirm name",confirm_name_cb),
 	choose_diff(Point(300,300),"Choose a difficuty!"),
-	title_screen(Point(1,1),"FlapGod.jpg",Suffix::Encoding::jpg)
+	title_screen(Point(0,0),"FlapGod.jpg",Suffix::Encoding::jpg)
     {
         //splash_shapes.push_back(txt);
         //splash_shapes.push_back(names1);
@@ -37,7 +37,7 @@ using namespace Graph_lib;
 		texties.push_back(new Textangle(Point(310,415),80,30,"Exit"));
 		
 		//for(int i = 0; i < main_menu_vec.size();i++)
-		for(auto i : texties)
+		//for(auto i : texties)
 			//splash_shapes.push_back(*i);	
          
         //widges.push_back(main_menu);
@@ -48,13 +48,6 @@ using namespace Graph_lib;
         main_menu_vec.push_back(new Button{Point(310,355),80,30,"Rules",rules_callback});
         main_menu_vec.push_back(new Button{Point(310,385),80,30,"Scores",scores_callback});
         main_menu_vec.push_back(new Button{Point(310,415),80,30,"Exit",exitgame_callback});
-		
-		for(auto i : main_menu_vec)
-		{
-			//main_menu.attach(*i);
-			//widges.push_back(*i);
-		}
-        //main_menu.attach(*this);
 		
 		diff_vec.push_back(new Button{Point(50,500),80,30,"2",diff2_callback});
 		diff_vec.push_back(new Button{Point(130,500),80,30,"3",diff3_callback});
@@ -86,7 +79,7 @@ using namespace Graph_lib;
 	//destructor
 	Game_screen::~Game_screen()
 	{	
-		detach_splash();
+		//detach_splash();
 		//splash_shapes.clear();
 		
 		//Delete all pointers used
@@ -252,10 +245,12 @@ using namespace Graph_lib;
         //Exit the game
         cout << "Bye!" << endl;
         
-        detach_splash();//Maybe this will handle segmentation fault
+        //detach_splash();//Maybe this will handle segmentation fault
         
         hide();
 		//Segmentation fault whenever the user exits the game?
+		
+		//this->~Game_screen();//What am i doing even?
     }
      
     void Game_screen::scores_callback(Address, Address data)
@@ -773,6 +768,8 @@ using namespace Graph_lib;
         for(int i = 0; i < splash_shapes.size(); i++)
             attach(splash_shapes[i]);
          
+		//attach(title_screen);
+		 
 		for (auto k : texties)
 			attach(*k);
 		
@@ -790,7 +787,9 @@ using namespace Graph_lib;
         }*/
          
         for(int i = 0; i < splash_shapes.size(); i++)
-            detach(splash_shapes[i]);
+        	detach(splash_shapes[i]);
+			
+		//detach(title_screen);	
 		
 		for ( auto k : main_menu_vec)
 			detach(*k);
