@@ -478,7 +478,7 @@ using namespace Graph_lib;
 			ready_attached = false;
 		}
 	
-		//attach(choose_diff);
+		attach(choose_diff);
 		for(auto k : diff_vec)
 			attach(*k);
 		choose_attached = true;
