@@ -799,7 +799,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pancake_maker()
 	{
-		//detach(choose_diff);
+		detach(choose_diff);
 		for(auto k : diff_vec)
 			detach(*k);
 		choose_attached = false;
