@@ -245,7 +245,7 @@ using namespace Graph_lib;
         //Exit the game
         cout << "Bye!" << endl;
         
-        //detach_splash();//Maybe this will handle segmentation fault
+        detach_splash();//Maybe this will handle segmentation fault
         
         hide();
 		//Segmentation fault whenever the user exits the game?
