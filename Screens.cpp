@@ -79,9 +79,6 @@ using namespace Graph_lib;
 	//destructor
 	Game_screen::~Game_screen()
 	{	
-		//detach_splash();
-		//splash_shapes.clear();
-		
 		//Delete all pointers used
 		for(auto k : diff_vec)
 			delete k;
