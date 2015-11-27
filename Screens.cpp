@@ -278,7 +278,7 @@ using namespace Graph_lib;
 		high_scores = new Out_box(Point(300,200),250,350,"High scores!");
 		showing_scores = new Text(Point(300,150),"These are the high scores!");
 		
-		attach(*high_scores);
+		//attach(*high_scores);
 		attach(*showing_scores);
 		show_scores_attached = true;
 		
@@ -305,11 +305,10 @@ using namespace Graph_lib;
 		for(int k = 0; k<scores.size() && k<5;k++)
 		{
 			cout << *scores[k] << endl;
-			//high_scores->put(*scores[k]);
 			
 			ost << *scores[k];
-			//high_scores->put(ost.str());
-			scores_text.push_back(new Text(Point(100,75+20*k),ost.str()));
+
+			scores_text.push_back(new Text(Point(300,250+20*k),ost.str()));
 			ost.str("");
 		}
 		
@@ -401,7 +400,7 @@ using namespace Graph_lib;
 		}
 		if(show_scores_attached)
 		{
-			detach(*high_scores);
+			//detach(*high_scores);
 			//delete high_scores;
 			
 			detach(*showing_scores);
