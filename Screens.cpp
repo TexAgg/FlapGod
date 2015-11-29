@@ -267,6 +267,8 @@ using namespace Graph_lib;
      
     void Game_screen::scores_pressed()
     {
+		scores_text.clear();
+		
 		detach_splash();
 		attach(r2s);
 		
