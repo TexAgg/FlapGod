@@ -35,12 +35,6 @@ using namespace Graph_lib;
 		texties.push_back(new Textangle(Point(310,355),80,30,"Rules"));
 		texties.push_back(new Textangle(Point(310,385),80,30,"Scores"));
 		texties.push_back(new Textangle(Point(310,415),80,30,"Exit"));
-		
-		//for(int i = 0; i < main_menu_vec.size();i++)
-		//for(auto i : texties)
-			//splash_shapes.push_back(*i);	
-         
-        //widges.push_back(main_menu);
      
         txt.set_font_size(36);
          
@@ -97,7 +91,6 @@ using namespace Graph_lib;
 			delete k;
 		for(auto k : scores_text)
 			delete k;
-		//delete high_scores;
 		delete solutions;
 		delete showing_scores;
 		//cout << "here4\n";
@@ -136,7 +129,7 @@ using namespace Graph_lib;
 	{
 		if (positions==ordered_ints)
 		{
-			cout << "Congrats! " << turn << " turns! " << endl;
+			//cout << "Congrats! " << turn << " turns! " << endl;
 			
 			pancakes_ordered = true;
 			
@@ -158,18 +151,19 @@ using namespace Graph_lib;
 			
 			output.open("scores.txt",ios::app);
 			output << score << " " << player_name << endl;
-			cout << score << " " << player_name << endl;
+			//cout << score << " " << player_name << endl;
 			
 			//Is this neccesary?
 			output.flush();
 			output.close();
 		}
 		
+		//If the player takes too long
 		if(score < 0)
 		{
 			r2s_pressed();
 			
-			cout << "You lose!" << endl;
+			//cout << "You lose!" << endl;
 		}
 	}
      
@@ -192,7 +186,7 @@ using namespace Graph_lib;
     void Game_screen::newgame_pressed()
     {
         //Start a new game
-        cout << "Time for a new game!" << endl;
+        //cout << "Time for a new game!" << endl;
          
         detach_splash();
 		
@@ -225,7 +219,7 @@ using namespace Graph_lib;
     void Game_screen::rules_pressed()
     {
         //Explain the rules
-        cout << "These are the rules" << endl;
+        //cout << "These are the rules" << endl;
          
         detach_splash();
 		
@@ -242,33 +236,17 @@ using namespace Graph_lib;
     void Game_screen::exitgame_pressed()
     {
         //Exit the game
-        cout << "Bye!" << endl;
-		cout << "memory address for this: " << this << endl;
-		cout << (this==nullptr) << endl;
-		cout << "visible: " << this->visible() << endl;
-		
-		//Fl::flush();
-		//Fl::check();
+        //cout << "Bye!" << endl;
+		//cout << "memory address for this: " << this << endl;
+		//cout << (this==nullptr) << endl;
+		//cout << "visible: " << this->visible() << endl;
 		
 		//this->show();
 		detach_splash();
 		
-		//for(auto k : splash_shapes)
-		//	delete k;
-		/*for(auto k : main_menu_vec)
-			delete k;
-		for(auto k : texties)
-			delete k;*/
-		cout << "here1\n";
+		//cout << "here1\n";
 		this->hide();
-		cout << "here2\n";
-        
-        //Maybe this will handle segmentation fault
-        
-        //this->hide();
-		//Segmentation fault whenever the user exits the game?
-		
-		//this->~Game_screen();//What am i doing even?
+		//cout << "here2\n";
     }
      
     void Game_screen::scores_callback(Address, Address data)
@@ -287,31 +265,43 @@ using namespace Graph_lib;
         spc.scores_pressed();
     }
      
-	//Weird stuff happens whenever you start with an empty file
     void Game_screen::scores_pressed()
     {
 		detach_splash();
 		attach(r2s);
 		
-		//high_scores = new Out_box(Point(300,200),250,350,"High scores!");
 		showing_scores = new Text(Point(300,150),"These are the high scores!");
 		if(showing_scores==nullptr)
 			cout << "bad" << endl;
 		else
 			cout << "good" << endl;
 		
-		//attach(*high_scores);
 		attach(*showing_scores);
 		show_scores_attached = true;
 		
         //Display the high scores
-        cout << "These are the scores" << endl;
+        //cout << "These are the scores" << endl;
 		
 		int a;
 		string b;
 		
 		input.open("scores.txt");
 		
+		if(!input)//If there is no file
+			{
+				Text error_text(Point(200,200),"There are no scores! Try playing a game");
+				attach(error_text);
+				redraw();
+				Fl::flush();
+				Fl::redraw();
+				detach(error_text);
+				system("sleep 2");
+				
+				r2s_pressed();
+			}
+		
+		else
+		{
 		while(input)
 		{	
 			input>>a>>b;
@@ -322,11 +312,10 @@ using namespace Graph_lib;
 		scores.erase(scores.begin()+scores.size()-1); //Delete last element, since it is somehow duplicated
 		
 		sort(scores.begin(), scores.end(),score_compare); //sorts in descending order now, jackass
-		//reverse(scores.begin(),scores.end());				//sort sorts into ascending order. Reverse to get highest to lowest
 		
 		for(int k = 0; k<scores.size() && k<5;k++)
 		{
-			cout << *scores[k] << endl;
+			//cout << *scores[k] << endl;
 			
 			ost << *scores[k];
 
@@ -341,28 +330,8 @@ using namespace Graph_lib;
 		
 		input.close();
 		
-		/*
-		for(auto k : scores)
-		{
-			ost << *k;
-			high_scores->put(ost.str());	
-		}
-		*/
-		
-		//output.open("scores.txt",ios::trunc);
-		
-		/* if(scores.size()!=0)
-		{
-			for (int i = 0; i<scores.size() && i <5; i++)
-			{
-				output << *scores[i] << endl;
-				
-				cout << i+1 << ": "<< *scores[i] << endl;
-			}
-			output.close();
-		} */
-		
 		scores.clear();
+	}
     }
 	
 	void Game_screen::r2s_callback(Address, Address data)
@@ -381,10 +350,7 @@ using namespace Graph_lib;
 		r2s.hide();
 		detach(rules);
 		if (diff_attached)
-		{
-			//detach(choose_diff);
-			//diff.hide();
-			
+		{	
 			for(auto k : diff_vec)
 				detach(*k);
 			
@@ -478,7 +444,7 @@ using namespace Graph_lib;
 			}	
 		}
 		
-		cout << "Your name is " << player_name << endl;
+		//cout << "Your name is " << player_name << endl;
 	}
 	
 	void Game_screen::ready_callback(Address, Address data)
