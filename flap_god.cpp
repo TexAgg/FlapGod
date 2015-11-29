@@ -44,8 +44,12 @@ int main()
   try
   {
 	Game_screen spl(Point (100,100),800,600,"Flap God");
+	
+	//cout << "flap_god.cpp" << endl;
     
     return gui_main();
+	
+	//cout << "and again" << endl;
   }
   catch(exception& e)
   {

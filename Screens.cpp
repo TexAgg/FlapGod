@@ -79,6 +79,7 @@ using namespace Graph_lib;
 	//destructor
 	Game_screen::~Game_screen()
 	{	
+		//cout << "here3\n";
 		//Delete all pointers used
 		for(auto k : diff_vec)
 			delete k;
@@ -96,9 +97,10 @@ using namespace Graph_lib;
 			delete k;
 		for(auto k : scores_text)
 			delete k;
-		delete high_scores;
+		//delete high_scores;
 		delete solutions;
 		delete showing_scores;
+		//cout << "here4\n";
 		
 	}
     
@@ -241,10 +243,29 @@ using namespace Graph_lib;
     {
         //Exit the game
         cout << "Bye!" << endl;
+		cout << "memory address for this: " << this << endl;
+		cout << (this==nullptr) << endl;
+		cout << "visible: " << this->visible() << endl;
+		
+		//Fl::flush();
+		//Fl::check();
+		
+		//this->show();
+		detach_splash();
+		
+		//for(auto k : splash_shapes)
+		//	delete k;
+		/*for(auto k : main_menu_vec)
+			delete k;
+		for(auto k : texties)
+			delete k;*/
+		cout << "here1\n";
+		this->hide();
+		cout << "here2\n";
         
-        //detach_splash();//Maybe this will handle segmentation fault
+        //Maybe this will handle segmentation fault
         
-        hide();
+        //this->hide();
 		//Segmentation fault whenever the user exits the game?
 		
 		//this->~Game_screen();//What am i doing even?
@@ -272,8 +293,12 @@ using namespace Graph_lib;
 		detach_splash();
 		attach(r2s);
 		
-		high_scores = new Out_box(Point(300,200),250,350,"High scores!");
+		//high_scores = new Out_box(Point(300,200),250,350,"High scores!");
 		showing_scores = new Text(Point(300,150),"These are the high scores!");
+		if(showing_scores==nullptr)
+			cout << "bad" << endl;
+		else
+			cout << "good" << endl;
 		
 		//attach(*high_scores);
 		attach(*showing_scores);
@@ -850,6 +875,10 @@ using namespace Graph_lib;
 		
 		//Find solution
 		solutions=find_solution(positions);
+		if(solutions==nullptr)
+			cout << "bad" << endl;
+		else
+			cout << "good" << endl;
 		
 		for(int i = 0; i<positions.size();i++)
 			positions[i]--;
