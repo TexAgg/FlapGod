@@ -51,7 +51,9 @@ struct Score
 	Score(int, string);
 	
 	int score;
-	string name;	
+	string name;
+
+	string to_string();
 };
 
 bool score_compare(Score*, Score*);

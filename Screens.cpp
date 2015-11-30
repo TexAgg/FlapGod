@@ -133,8 +133,12 @@ using namespace Graph_lib;
 			
 			pancakes_ordered = true;
 			
+			Score scre(score,player_name);
+			Graph_lib::Text scrnme(Point(300,240),scre.to_string());
 			Graph_lib::Text gg(Point(300,300),"Congrats!");
 			gg.set_font_size(24);
+			scrnme.set_font_size(24);
+			attach(scrnme);
 			attach(gg);
 			
 			redraw();
@@ -142,6 +146,7 @@ using namespace Graph_lib;
 			Fl::redraw();
 			
 			detach(gg);
+			detach(scrnme);
 			
 			system("sleep 2");
 			

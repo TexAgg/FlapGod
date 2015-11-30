@@ -45,6 +45,15 @@ using namespace Graph_lib;
 		
 	}
 	
+	string Score::to_string()
+	{
+		int b = score;
+		string str = std::to_string(b);
+		str.append(" ");
+		str.append(name);
+		return str;
+	}
+	
 	bool operator<(const Score& sc1, const Score& sc2)
 	{
 		return sc1.score < sc2.score;
