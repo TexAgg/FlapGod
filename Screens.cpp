@@ -96,9 +96,7 @@ using namespace Graph_lib;
 			detach(*pcakes[i]);
 		
 		for(int i = 0; i < flip_buttons.size();i++)
-		{
 			detach(*flip_buttons[i]);
-		}
 		
 		pcakes.clear();
 		pons.clear();
@@ -215,10 +213,12 @@ using namespace Graph_lib;
 		attach(r2s);
 		
 		showing_scores = new Text(Point(300,150),"These are the high scores!");
+		/*
 		if(showing_scores==nullptr)
 			cout << "bad" << endl;
 		else
 			cout << "good" << endl;
+		*/	
 		
 		attach(*showing_scores);
 		show_scores_attached = true;
@@ -280,7 +280,6 @@ using namespace Graph_lib;
 	
 	void Game_screen::r2s_pressed()
 	{
-		cout<<"Returning to main menu\n" << endl;
 		attach_splash();
 		r2s.hide();
 		detach(rules);
