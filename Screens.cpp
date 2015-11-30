@@ -811,6 +811,7 @@ using namespace Graph_lib;
 		}
 		for(int i = 0; i < difficulty;i++)
 		{
+			//Make the buttons for flipping
 			flip_buttons.push_back(new Button(Point(pons[i]->x+300,pons[i]->y),80,25,to_string(i),pc_cb[i]));
 		}
 		
