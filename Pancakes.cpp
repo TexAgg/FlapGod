@@ -26,7 +26,6 @@ using namespace Graph_lib;
 	rec(pt, w, h),
 	tech(Point(pt.x+7,pt.y+h-10),s)
 	{
-		//tech = new Graph_lib::Text(pt, s);
 		rec.set_fill_color(Color::white);
 	}
 	
@@ -34,7 +33,6 @@ using namespace Graph_lib;
 	{
 		rec.draw_lines();
 		
-		//tech->draw_lines();
 		tech.draw_lines();
 	}
 	
