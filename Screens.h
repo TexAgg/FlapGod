@@ -39,7 +39,6 @@ private:
 	Graph_lib::Text choose_diff; //(Point(300,300),"Choose a difficulty!"); 
 
     Vector_ref<Shape> splash_shapes; 		 //All of the shapes in the splash screen
-    //Vector_ref<Widget> widges;  	 		 //All of the widges in the splash screen	
 	Vector<Pancake*> pcakes;				 //(Pointers to) the pancakes
 	vector<int> positions;						
 	Vector<Point*> pons; 					 //(Pointers to) all of the centers of the pancakes
@@ -50,14 +49,10 @@ private:
     Text names1, names2, names3; //Our names
 	Text group_num;
      
-    //Graph_lib::Menu main_menu;				 //The splash screen's main menu
 	Graph_lib::Button r2s; 					//Return to Splash Screen
 	Graph_lib::Image rules;		
 	Graph_lib::Button ready;				//For when the player is ready to start the game
-	//Graph_lib::Menu diff;					//Select the difficulty
 	Graph_lib::In_box initials; 
-	//Graph_lib::Menu flip_buttons;
-	//Graph_lib::Text choose_diff;
 	
 	//These are so I don't try to detach something which isn't attached
 	bool diff_attached = false;

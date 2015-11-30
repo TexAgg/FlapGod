@@ -69,7 +69,7 @@ using namespace Graph_lib;
 	
 	ostream& operator<<(ostream& os, const Score& sc)
 	{
-		return os << sc.score << " " << sc.name;// << endl;
+		return os << sc.score << " " << sc.name;
 	}
 	
 	istream& operator>>(istream& is, Score& sc)

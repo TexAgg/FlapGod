@@ -23,8 +23,6 @@ struct Pancake : Graph_lib::Ellipse
 	
 private:
 
-	//int h = 75;
-
 	int position = 0; //Position on screen (0 being the top)
 					 //center.y=25+55*position
 	
@@ -41,7 +39,6 @@ struct Textangle : Graph_lib::Shape
 private:
 
 	Graph_lib::Rectangle rec;
-	//Graph_lib::Text* tech;
 	Graph_lib::Text tech;	
 };
 
