@@ -485,7 +485,7 @@ using namespace Graph_lib;
 		//attach(diff);
 		diff_attached = true;
 		
-		cout << "Hello, " << player_name << endl;
+		//cout << "Hello, " << player_name << endl;
 	}
 	
 	void Game_screen::diff2_callback(Address, Address data)
@@ -496,7 +496,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::diff2()
 	{
-		cout << "Difficulty 2" << endl;
+		//cout << "Difficulty 2" << endl;
 		
 		difficulty = 2;
 		
@@ -511,7 +511,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::diff3()
 	{
-		cout << "Difficulty 3" << endl;
+		//cout << "Difficulty 3" << endl;
 		
 		difficulty = 3;
 		
@@ -526,7 +526,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::diff4()
 	{
-		cout << "Difficulty 4" << endl;
+		//cout << "Difficulty 4" << endl;
 		
 		difficulty = 4;
 		
@@ -541,7 +541,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::diff5()
 	{
-		cout << "Difficulty 5" << endl;
+		//cout << "Difficulty 5" << endl;
 		
 		difficulty = 5;
 		
@@ -556,7 +556,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::diff6()
 	{
-		cout << "Difficulty 6" << endl;
+		//cout << "Difficulty 6" << endl;
 		
 		difficulty = 6;
 		
@@ -571,7 +571,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::diff7()
 	{
-		cout << "Difficulty 7" << endl;
+		//cout << "Difficulty 7" << endl;
 		
 		difficulty = 7;
 		
@@ -586,7 +586,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::diff8()
 	{
-		cout << "Difficulty 8" << endl;
+		//cout << "Difficulty 8" << endl;
 		
 		difficulty = 8;
 		
@@ -601,7 +601,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::diff9()
 	{
-		cout << "Difficulty 9" << endl;
+		//cout << "Difficulty 9" << endl;
 		
 		difficulty = 9;
 		
@@ -616,7 +616,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pc1()
 	{
-		cout << "First pancake" << endl;
+		//cout << "First pancake" << endl;
 		
 		pstop=1;
 		flip_time();
@@ -632,7 +632,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pc2()
 	{
-		cout << "Second pancake" << endl;
+		//cout << "Second pancake" << endl;
 		
 		pstop=2;	
 		flip_time();
@@ -648,7 +648,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pc3()
 	{
-		cout << "Third pancake" << endl;
+		//cout << "Third pancake" << endl;
 
 		pstop=3;
 		flip_time();
@@ -664,7 +664,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pc4()
 	{
-		cout << "Fourth pancake" << endl;	
+		//cout << "Fourth pancake" << endl;	
 
 		pstop=4;
 		flip_time();
@@ -680,7 +680,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pc5()
 	{
-		cout << "Fifth pancake" << endl;
+		//cout << "Fifth pancake" << endl;
 
 		pstop=5;
 		flip_time();	
@@ -696,7 +696,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pc6()
 	{
-		cout << "Sixth pancake" << endl;	
+		//cout << "Sixth pancake" << endl;	
 
 		pstop=6;
 		flip_time();	
@@ -712,7 +712,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pc7()
 	{
-		cout << "Seventh pancake" << endl;
+		//cout << "Seventh pancake" << endl;
 
 		pstop=7;
 		flip_time();	
@@ -728,7 +728,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pc8()
 	{
-		cout << "Eight pancake" << endl;	
+		//cout << "Eight pancake" << endl;	
 
 		pstop=8;
 		flip_time();	
@@ -744,7 +744,7 @@ using namespace Graph_lib;
 	
 	void Game_screen::pc9()
 	{
-		cout << "Ninth pancake" << endl;		
+		//cout << "Ninth pancake" << endl;		
 		
 		pstop=9;
 		flip_time();	
@@ -825,8 +825,8 @@ using namespace Graph_lib;
 			//pons.push_back(new Point(400,25+55*positions[i]));
 		}
 	
-		cout << "Before shuffle" << endl;
-		print_positions();
+		//cout << "Before shuffle" << endl;
+		//print_positions();
 		
 		random_shuffle(positions.begin(),positions.end());
 		//Make sure the pancakes don't start out in order
@@ -835,11 +835,11 @@ using namespace Graph_lib;
 		{
 			random_shuffle(positions.begin(),positions.end());
 			
-			cout << "Shuffling pancakes" << endl;
+			//cout << "Shuffling pancakes" << endl;
 		}
 		
-		cout << "After shuffle" << endl;
-		print_positions();
+		//cout << "After shuffle" << endl;
+		//print_positions();
 		
 		pancakes_ordered=false;
 		
@@ -856,7 +856,7 @@ using namespace Graph_lib;
 		for(int i = 0; i<positions.size();i++)
 			positions[i]--;
 		
-		cout <<"Can be done in " << solutions->size() << " turns" << endl;
+		//cout <<"Can be done in " << solutions->size() << " turns" << endl;
 		
 		for (int i = 0; i<positions.size(); i++)
 		{
