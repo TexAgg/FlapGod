@@ -1,3 +1,5 @@
+#Makefile for Flap God
+
 all: Main
 
 Main: Graph.o GUI.o Window.o Simple_window.o Screens.o flipflaps.o Pancakes.o

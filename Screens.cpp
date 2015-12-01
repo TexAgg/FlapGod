@@ -107,7 +107,6 @@ using namespace Graph_lib;
 		redraw();
 	} 
 	
-	//Sometimes the game doesnt end when they are sorted
 	void Game_screen::check_pancakes()//Called in each flip button's callback
 	{
 		if (positions==ordered_ints)
@@ -213,12 +212,6 @@ using namespace Graph_lib;
 		attach(r2s);
 		
 		showing_scores = new Text(Point(300,150),"These are the high scores!");
-		/*
-		if(showing_scores==nullptr)
-			cout << "bad" << endl;
-		else
-			cout << "good" << endl;
-		*/	
 		
 		attach(*showing_scores);
 		show_scores_attached = true;
@@ -278,6 +271,7 @@ using namespace Graph_lib;
         spc.r2s_pressed();
 	}
 	
+	//Detach everything that is attached
 	void Game_screen::r2s_pressed()
 	{
 		attach_splash();
@@ -698,12 +692,6 @@ using namespace Graph_lib;
 		
 		//Find solution
 		solutions=find_solution(positions);
-		/*
-		if(solutions==nullptr)
-			cout << "bad" << endl;
-		else
-			cout << "good" << endl;
-		*/
 		
 		for(int i = 0; i<positions.size();i++)
 			positions[i]--;
