@@ -85,9 +85,7 @@ using namespace Graph_lib;
     void Game_screen::print_positions()
     {
     	for (int k = 0; k < difficulty; k++)
-    	{
     		cout << positions[k] << endl;
-    	}
     }
      
 	void Game_screen::remove_pancakes()
@@ -136,8 +134,7 @@ using namespace Graph_lib;
 			
 			output.open("scores.txt",ios::app);
 			output << score << " " << player_name << endl;
-
-			//Is this neccesary?
+			
 			output.flush();
 			output.close();
 		}
@@ -159,7 +156,7 @@ using namespace Graph_lib;
 			
 			detach(gg);
 			detach(scrnme);
-			
+
 			system("sleep 2");
 			
 			r2s_pressed();
@@ -311,43 +308,40 @@ using namespace Graph_lib;
 		
 		else
 		{
-		while(input)
-		{	
-			input>>a>>b;
+			while(input)
+			{	
+				input>>a>>b;
+				
+				scores.push_back(new Score(a,b));
+			}
+			scores.erase(scores.begin()+scores.size()-1); //Delete last element, since it is somehow duplicated
 			
-			scores.push_back(new Score(a,b));
-		}
-		scores.erase(scores.begin()+scores.size()-1); //Delete last element, since it is somehow duplicated
-		
-		sort(scores.begin(), scores.end(),score_compare); //sorts in descending order 
-		
-		for(int k = 0; k<scores.size() && k<5;k++)
-		{
-			ost << *scores[k];
-
-			scores_text.push_back(new Text(Point(500,250+20*k),ost.str()));
+			sort(scores.begin(), scores.end(),score_compare); //sorts in descending order 
+			
+			for(int k = 0; k<scores.size() && k<5;k++)
+			{
+				ost << *scores[k];
+	
+				scores_text.push_back(new Text(Point(500,250+20*k),ost.str()));
+				ost.str("");
+			}
+			
+			for(auto k :scores_text)
+				attach(*k);
+			
+			redraw();
+			Fl::flush();
+			Fl::redraw();
+			system("sleep 2");
+			
+			for(auto k :scores_text)
+				detach(*k);
+			
+			detach(*showing_scores);
 			ost.str("");
+			input.close();
+			scores.clear();
 		}
-		
-		for(auto k :scores_text)
-			attach(*k);
-		
-		redraw();
-		Fl::flush();
-		Fl::redraw();
-		system("sleep 2");
-		
-		for(auto k :scores_text)
-			detach(*k);
-		
-		detach(*showing_scores);
-		
-		ost.str("");
-		
-		input.close();
-		
-		scores.clear();
-	}
 	}
 	
 	void Game_screen::r2s_callback(Address, Address data)
@@ -366,7 +360,6 @@ using namespace Graph_lib;
 		{	
 			for(auto k : diff_vec)
 				detach(*k);
-			
 			diff_attached = false;
 		}
 		if (ready_attached)
@@ -402,10 +395,8 @@ using namespace Graph_lib;
 		if(show_scores_attached)
 		{
 			detach(*showing_scores);
-			
 			for(auto k : scores_text)
 				detach(*k);
-			
 			show_scores_attached = false;
 		}
 	}
@@ -432,18 +423,7 @@ using namespace Graph_lib;
 			
 			detach(confirm_name);
 			confirm_attached = false;
-			
-			/*
-			scores_pressed();
-			
-			redraw();
-			Fl::flush();
-			Fl::redraw();
-			system("sleep 2");
-			
-			r2s_pressed();
-			*/
-			
+	
 			scoresies();
 			
 			ready_pressed();
@@ -478,12 +458,6 @@ using namespace Graph_lib;
 			detach(ready);
 			ready_attached = false;
 		}
-	
-		//Show scores
-		//scores_pressed();
-		//wait
-		//hide scores
-		//r2s_pressed();
 	
 		attach(choose_diff);
 		for(auto k : diff_vec)
@@ -767,10 +741,7 @@ using namespace Graph_lib;
 			pons.push_back(new Point(400,25+55*i));
 		}
 		for(int i = 0; i < difficulty;i++)
-		{
-			//Make the buttons for flipping
-			flip_buttons.push_back(new Button(Point(pons[i]->x+300,pons[i]->y),80,25,to_string(i),pc_cb[i]));
-		}
+			flip_buttons.push_back(new Button(Point(pons[i]->x+300,pons[i]->y),80,25,to_string(i),pc_cb[i]));//Make the buttons for flipping
 		
 		//Delete all the points and then make them in a random order
 		pons.clear();
@@ -785,9 +756,7 @@ using namespace Graph_lib;
 	
 		//Make sure the pancakes don't start out in order
 		while(positions==ordered_ints)
-		{
 			random_shuffle(positions.begin(),positions.end());
-		}
 		
 		pancakes_ordered=false;
 		
@@ -801,15 +770,11 @@ using namespace Graph_lib;
 			positions[i]--;
 
 		for (int i = 0; i<positions.size(); i++)
-		{
 			pons.push_back(new Point(400,25+55*i));
-		}
-
+		
 		//Make the pancakes
 		for (int i = 0; i < difficulty; i++)
-		{
 			pcakes.push_back(new Pancake(*pons[i],75+25*positions[i],25));
-		}
 		
 		for(int i = 0; i < pcakes.size();i++)
 		{
@@ -834,9 +799,7 @@ using namespace Graph_lib;
 		}
 		
 		for(int i = 0; i < flip_buttons.size(); i++)
-		{
 			attach(*flip_buttons[i]);
-		}
 		
 		pancakes_attached=true;
 		redraw();
@@ -850,30 +813,25 @@ using namespace Graph_lib;
 		reverse(positions.begin(), positions.begin()+pstop );
 		
 		for(int i = 0; i < difficulty; i++)
-		{
 			detach(*pcakes[i]);
-		}
+		
 		pcakes.clear();
 		pons.clear();
 		for(int i = 0; i < difficulty; i++)
-		{
 			pons.push_back(new Point(400,25+55*i));
-		}
+		
 		for (int i = 0; i < difficulty; i++)
-		{
 			pcakes.push_back(new Pancake(*pons[i],75+25*positions[i],25));
-		}
+		
 		for(int i = 0; i < pcakes.size(); i++)
 		{
 			pcakes[i]->set_fill_color(5*positions[i]);
-			
 			attach(*pcakes[i]);
 		}
 		
 		for(int i = 0; i < difficulty; i++)
 		{
 			pcakes[i]->set_position(positions[i]);
-			
 			pcakes[i]->set_rank(i);
 		}
 
