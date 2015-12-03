@@ -282,6 +282,79 @@ using namespace Graph_lib;
 	}
     }
 	
+	void Game_screen::scoresies()
+	{
+		scores_text.clear();
+		
+		//detach_splash();
+		//attach(r2s);
+		
+		showing_scores = new Text(Point(500,150),"These are the high scores!");
+		
+		attach(*showing_scores);
+		show_scores_attached = true;
+		
+		int a;
+		string b;
+		
+		input.open("scores.txt");
+		
+		if(!input)//If there is no file
+			{
+				/*
+				Text error_text(Point(200,200),"There are no scores! Try playing a game");
+				attach(error_text);
+				redraw();
+				Fl::flush();
+				Fl::redraw();
+				detach(error_text);
+				system("sleep 2");
+				
+				r2s_pressed();
+				*/
+			}
+		
+		else
+		{
+		while(input)
+		{	
+			input>>a>>b;
+			
+			scores.push_back(new Score(a,b));
+		}
+		scores.erase(scores.begin()+scores.size()-1); //Delete last element, since it is somehow duplicated
+		
+		sort(scores.begin(), scores.end(),score_compare); //sorts in descending order 
+		
+		for(int k = 0; k<scores.size() && k<5;k++)
+		{
+			ost << *scores[k];
+
+			scores_text.push_back(new Text(Point(500,250+20*k),ost.str()));
+			ost.str("");
+		}
+		
+		for(auto k :scores_text)
+			attach(*k);
+		
+		redraw();
+		Fl::flush();
+		Fl::redraw();
+		system("sleep 2");
+		
+		for(auto k :scores_text)
+			detach(*k);
+		
+		detach(*showing_scores);
+		
+		ost.str("");
+		
+		input.close();
+		
+		scores.clear();
+	}
+	}
+	
 	void Game_screen::r2s_callback(Address, Address data)
 	{
         Game_screen& spc = *static_cast<Game_screen*>(data);
@@ -365,6 +438,19 @@ using namespace Graph_lib;
 			detach(confirm_name);
 			confirm_attached = false;
 			
+			/*
+			scores_pressed();
+			
+			redraw();
+			Fl::flush();
+			Fl::redraw();
+			system("sleep 2");
+			
+			r2s_pressed();
+			*/
+			
+			scoresies();
+			
 			ready_pressed();
 		}
 		
@@ -397,6 +483,12 @@ using namespace Graph_lib;
 			detach(ready);
 			ready_attached = false;
 		}
+	
+		//Show scores
+		//scores_pressed();
+		//wait
+		//hide scores
+		//r2s_pressed();
 	
 		attach(choose_diff);
 		for(auto k : diff_vec)

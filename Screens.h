@@ -147,6 +147,8 @@ private:
 	
 	void print_positions(); //For bug checking
 	
+	void scoresies();
+	
 	Graph_lib::Text* showing_scores = nullptr; //showing_scores(Point(300,150),"These are the high scores!")
 	bool show_scores_attached = false;
 	
