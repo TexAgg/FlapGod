@@ -861,6 +861,7 @@ using namespace Graph_lib;
 		}
 		
 		score = (100 - 10 * (turn - solutions->size())) * difficulty;
+	
 		string counting = "Turn: ";
 		counting.append(to_string(turn));
 		counting.append(", Score:");
