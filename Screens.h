@@ -148,6 +148,8 @@ private:
 	void print_positions(); //For bug checking
 	
 	void scoresies(); //To show the scores when the player starts a new game
+	Text *so_far;//Score so far
+	bool so_far_attached = false;
 	
 	Graph_lib::Text* showing_scores = nullptr; //showing_scores(Point(300,150),"These are the high scores!")
 	bool show_scores_attached = false;

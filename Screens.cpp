@@ -80,6 +80,7 @@ using namespace Graph_lib;
 			delete k;
 		delete solutions;
 		delete showing_scores;
+		delete so_far;
 	}
     
     void Game_screen::print_positions()
@@ -398,6 +399,11 @@ using namespace Graph_lib;
 			for(auto k : scores_text)
 				detach(*k);
 			show_scores_attached = false;
+		}
+		if(so_far_attached)
+		{
+			detach(*so_far);
+			so_far_attached = false;
 		}
 	}
 	
@@ -741,7 +747,7 @@ using namespace Graph_lib;
 			pons.push_back(new Point(400,25+55*i));
 		}
 		for(int i = 0; i < difficulty;i++)
-			flip_buttons.push_back(new Button(Point(pons[i]->x+300,pons[i]->y),80,25,to_string(i),pc_cb[i]));//Make the buttons for flipping
+			flip_buttons.push_back(new Button(Point(pons[i]->x+300,pons[i]->y),80,25,to_string(i+1),pc_cb[i]));//Make the buttons for flipping
 		
 		//Delete all the points and then make them in a random order
 		pons.clear();
@@ -803,6 +809,17 @@ using namespace Graph_lib;
 		
 		pancakes_attached=true;
 		redraw();
+		
+		string how_many_flips = "Can be done in ";
+		how_many_flips.append(to_string(solutions->size()));
+		how_many_flips.append(" flips");
+		Text this_many(Point(75,75),how_many_flips);
+		attach(this_many);
+		redraw();
+		Fl::flush();
+		Fl::redraw();
+		system("sleep 2");
+		detach(this_many);
 	}
 
 	void Game_screen::flip_time()
@@ -836,6 +853,20 @@ using namespace Graph_lib;
 		}
 
 		redraw();
-
+		
+		if(so_far_attached)
+		{
+			detach(*so_far);
+			so_far_attached = false;
+		}
+		
 		score = (100 - 10 * (turn - solutions->size())) * difficulty;
+		string counting = "Turn: ";
+		counting.append(to_string(turn));
+		counting.append(", Score:");
+		counting.append(to_string(score));
+		
+		so_far = new Text(Point(75,300),counting);
+		attach(*so_far);
+		so_far_attached = true;
 	}
