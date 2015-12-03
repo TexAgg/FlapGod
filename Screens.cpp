@@ -286,9 +286,6 @@ using namespace Graph_lib;
 	{
 		scores_text.clear();
 		
-		//detach_splash();
-		//attach(r2s);
-		
 		showing_scores = new Text(Point(500,150),"These are the high scores!");
 		
 		attach(*showing_scores);
@@ -301,17 +298,15 @@ using namespace Graph_lib;
 		
 		if(!input)//If there is no file
 			{
-				/*
-				Text error_text(Point(200,200),"There are no scores! Try playing a game");
+				
+				Text error_text(Point(500,200),"There are no scores!");
 				attach(error_text);
 				redraw();
 				Fl::flush();
 				Fl::redraw();
 				detach(error_text);
+				detach(*showing_scores);
 				system("sleep 2");
-				
-				r2s_pressed();
-				*/
 			}
 		
 		else

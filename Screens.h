@@ -147,7 +147,7 @@ private:
 	
 	void print_positions(); //For bug checking
 	
-	void scoresies();
+	void scoresies(); //To show the scores when the player starts a new game
 	
 	Graph_lib::Text* showing_scores = nullptr; //showing_scores(Point(300,150),"These are the high scores!")
 	bool show_scores_attached = false;
