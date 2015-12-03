@@ -145,6 +145,23 @@ using namespace Graph_lib;
 		//If the player takes too long
 		if(score < 0)
 		{
+			Score scre(0,player_name);
+			Graph_lib::Text scrnme(Point(300,240),scre.to_string());
+			Graph_lib::Text gg(Point(300,300),"You lose!");
+			gg.set_font_size(24);
+			scrnme.set_font_size(24);
+			attach(scrnme);
+			attach(gg);
+			
+			redraw();
+			Fl::flush();
+			Fl::redraw();
+			
+			detach(gg);
+			detach(scrnme);
+			
+			system("sleep 2");
+			
 			r2s_pressed();
 		}
 	}
