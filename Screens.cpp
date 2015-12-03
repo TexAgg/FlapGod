@@ -19,7 +19,7 @@ using namespace Graph_lib;
 	initials(Point(200,110),80,40,"Initials:"),
 	obox(Point(325,150),300,45,"Error:"),
 	confirm_name(Point(200,150),100,30,"Confirm name",confirm_name_cb),
-	choose_diff(Point(300,300),"Choose a difficuty!"),
+	choose_diff(Point(300,300),"Choose a difficulty!"),
 	title_screen(Point(0,0),"FlapGod.jpg",Suffix::Encoding::jpg)
     {
 		splash_shapes.push_back(title_screen);
